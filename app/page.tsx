@@ -39,7 +39,7 @@ export default function Home() {
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-        <div className="fixed inset-x-0 bottom-0 top-0 bg-white shadow-lg p-6 animate-slide-up overflow-y-auto">
+      <div className="fixed inset-0 bg-white shadow-lg animate-slide-up flex flex-col p-4">
 
           {/* Close Button */}
           <div className="relative flex items-center mb-6">
@@ -54,7 +54,7 @@ export default function Home() {
 
 
           {/* Menu Items */}
-          <nav className="space-y-4 space-y-4 overflow-y-auto h-[500px] no-scrollbar">
+          <nav className="flex-1 space-y-4 overflow-y-auto no-scrollbar">
   {/* Top Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
