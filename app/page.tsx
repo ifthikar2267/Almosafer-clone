@@ -160,16 +160,16 @@ export default function Home() {
       {/* Main options */}
       <section className="grid grid-cols-3 gap-3 p-4 bg-[#e6f4f7]">
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
-          <Plane className="w-6 h-6" />
-          <span className="mt-2 text-sm font-medium">Flights</span>
+          <Plane className="w-6 h-6 text-black" />
+          <span className="mt-2 text-sm font-medium text-black">Flights</span>
         </div>
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
-          <Bed className="w-6 h-6" />
-          <span className="mt-2 text-sm font-medium">Stays</span>
+          <Bed className="w-6 h-6 text-black" />
+          <span className="mt-2 text-sm font-medium text-black">Stays</span>
         </div>
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm relative">
-          <Mountain className="w-6 h-6" />
-          <span className="mt-2 text-sm font-medium">Activities</span>
+          <Mountain className="w-6 h-6 text-black" />
+          <span className="mt-2 text-sm font-medium text-black">Activities</span>
           <span className="absolute -top-2 right-8 bg-green-600 text-white text-xs px-2 py-0.5 rounded-lg">
             New
           </span>
@@ -178,29 +178,29 @@ export default function Home() {
 
       {/* More services */}
       <section className="p-4 bg-white">
-        <h3 className="text-base font-semibold mb-3">More services</h3>
+        <h3 className="text-base font-semibold mb-3 text-black">More services</h3>
         <div className="grid grid-cols-4 gap-3">
           <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
-            <Repeat className="w-6 h-6" />
-            <span className="mt-2 text-xs font-medium text-center">
+            <Repeat className="w-6 h-6 text-black" />
+            <span className="mt-2 text-xs font-medium text-center text-black">
               Airport transfer
             </span>
           </div>
           <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
-           <Train className="w-6 h-6" />
-            <span className="mt-2 text-xs font-medium text-center">
+           <Train className="w-6 h-6 text-black" />
+            <span className="mt-2 text-xs font-medium text-center text-black">
               Haramain Railway
             </span>
           </div>
           <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
-           <Car className="w-6 h-6" />
-            <span className="mt-2 text-xs font-medium text-center">
+           <Car className="w-6 h-6 text-black" />
+            <span className="mt-2 text-xs font-medium text-center text-black">
               Car rental
             </span>
           </div>
-          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm text-black">
             ⋯
-            <span className="mt-2 text-xs font-medium text-center">
+            <span className="mt-2 text-xs font-medium text-center text-black">
               See more
             </span>
           </div>
