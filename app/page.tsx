@@ -14,12 +14,12 @@ export default function Home() {
   return (
     <main className="bg-white min-h-screen font-sans">
       {/* Header */}
-       <header className="relative flex items-center justify-center p-4 bg-[#f5fbfc] shadow-sm">
+       <header className="relative flex items-center justify-center p-4 bg-[#e6f4f7] shadow-sm">
         <button
           onClick={() => setIsOpen(true)}
           className="absolute left-4 text-[#004E66] md:hidden"
         >
-          <Bars3Icon className="w-6 h-6 text-teal-500" />
+          <Bars3Icon className="w-6 h-6 text-cyan-600" />
         </button>
       {/* Centered Logo */}
       <Image
@@ -44,7 +44,7 @@ export default function Home() {
           <div className="relative flex items-center mb-6">
             {/* Close button on the left */}
             <button onClick={() => setIsOpen(false)} className="absolute left-0">
-              <XMarkIcon className="w-6 h-6 text-teal-500" />
+              <XMarkIcon className="w-6 h-6 text-cyan-600" />
             </button>
 
             {/* Centered text */}
@@ -60,28 +60,28 @@ export default function Home() {
       <span className="flex items-center gap-4">
         <House className="w-6 h-6" /> Home
       </span>
-      <ChevronRight className="w-5 h-5 text-teal-500" />
+      <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
   <span className="flex items-center gap-3">
     <User className="w-6 h-6" /> Profile
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
   <span className="flex items-center gap-3">
     <CalendarCheck className="w-6 h-6" /> Bookings
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
   <span className="flex items-center gap-3">
     <Tag className="w-6 h-6" /> Offers
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
   </div>
@@ -95,21 +95,21 @@ export default function Home() {
   <span className="flex items-center gap-3">
     <Plane className="w-6 h-6" /> Flights
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
   <span className="flex items-center gap-3">
     <Bed className="w-6 h-6" /> Stays
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
   <span className="flex items-center gap-3">
     <Mountain className="w-6 h-6" /> Activities
   </span>
-  <ChevronRight className="w-5 h-5 text-teal-500" />
+  <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
   </div>
@@ -123,21 +123,21 @@ export default function Home() {
       <span className="flex items-center gap-4">
         <Globe className="w-6 h-6" /> Change language
       </span>
-      <ChevronRight className="w-5 h-5 text-teal-500" />
+      <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 justify-between">
       <span className="flex items-center gap-4">
         <MapPin className="w-6 h-6" /> Country
       </span>
-      <ChevronRight className="w-5 h-5 text-teal-500" />
+      <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200 justify-between">
       <span className="flex items-center gap-4">
         <DollarSign className="w-6 h-6" /> Display currency
       </span>
-      <ChevronRight className="w-5 h-5 text-teal-500" />
+      <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
   </div>
 </nav>
@@ -147,18 +147,18 @@ export default function Home() {
       </Dialog>
 
       {/* Greeting */}
-      <section className="relative p-4 bg-[#f5fbfc]">
+      <section className="relative p-4 bg-[#e6f4f7]">
         <h2 className="text-lg font-bold">Hi there</h2>
         <p className="text-gray-600">What will you explore next?</p>
 
         {/* Sign in on the right */}
-      <button className="absolute right-4 top-7 text-teal-500 font-medium">
+      <button className="absolute right-4 top-7 text-cyan-600 font-medium">
         Sign in
       </button>
       </section>
 
       {/* Main options */}
-      <section className="grid grid-cols-3 gap-3 p-4 bg-[#f5fbfc]">
+      <section className="grid grid-cols-3 gap-3 p-4 bg-[#e6f4f7]">
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
           <Plane className="w-6 h-6" />
           <span className="mt-2 text-sm font-medium">Flights</span>
@@ -170,7 +170,7 @@ export default function Home() {
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm relative">
           <Mountain className="w-6 h-6" />
           <span className="mt-2 text-sm font-medium">Activities</span>
-          <span className="absolute -top-2 right-8 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
+          <span className="absolute -top-2 right-8 bg-green-500 text-white text-xs px-2 py-0.5 rounded-lg">
             New
           </span>
         </div>
@@ -213,7 +213,7 @@ export default function Home() {
           <h3 className="text-base font-semibold">
             Top summer deals for you
           </h3>
-          <button className="text-teal-500 text-sm font-medium">View all</button>
+          <button className="text-cyan-600 text-sm font-medium">View all</button>
         </div>
 
         <div className="overflow-x-auto flex gap-4 no-scrollbar p-4">
