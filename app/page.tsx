@@ -39,7 +39,8 @@ export default function Home() {
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-        <div className="fixed inset-x-0 bottom-0 top-0 bg-white shadow-lg p-6 animate-slide-up">
+        <div className="fixed inset-x-0 bottom-0 max-h-[100vh] bg-white shadow-lg p-6 animate-slide-up overflow-y-auto">
+
           {/* Close Button */}
           <div className="relative flex items-center mb-6">
             {/* Close button on the left */}
@@ -48,7 +49,7 @@ export default function Home() {
             </button>
 
             {/* Centered text */}
-            <h2 className="mx-auto text-lg font-semibold text-black">Options</h2>
+            <h2 className="mx-auto text-lg font-semibold text-gray-600">Options</h2>
           </div>
 
 
@@ -57,29 +58,29 @@ export default function Home() {
   {/* Top Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
-      <span className="flex items-center gap-4 text-black">
-        <Search className="w-6 h-6 text-black" /> Home
+      <span className="flex items-center gap-4 text-gray-700">
+        <Search className="w-6 h-6 text-gray-700" /> Home
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-black">
-    <User className="w-6 h-6 text-black" /> Profile
+  <span className="flex items-center gap-4 text-gray-700">
+    <User className="w-6 h-6 text-gray-700" /> Profile
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-black">
-    <CalendarCheck className="w-6 h-6 text-black" /> Bookings
+  <span className="flex items-center gap-4 text-gray-700">
+    <CalendarCheck className="w-6 h-6 text-gray-700" /> Bookings
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-4 text-black">
-    <Tag className="w-6 h-6 text-black" /> Offers
+  <span className="flex items-center gap-4 text-gray-700text-gray-700">
+    <Tag className="w-6 h-6 text-gray-700text-gray-700" /> Offers
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -87,27 +88,27 @@ export default function Home() {
   </div>
 
   {/* Section Title */}
-  <h2 className="px-2 py-2 text-lg font-bold text-black">Our Products</h2>
+  <h2 className="px-2 py-2 text-lg font-semibold text-gray-600">Our Products</h2>
 
   {/* Product Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-black">
-    <Plane className="w-6 h-6 text-black" /> Flights
+  <span className="flex items-center gap-4 text-gray-700text-gray-700">
+    <Plane className="w-6 h-6 text-gray-700text-gray-700" /> Flights
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-black">
-    <Bed className="w-6 h-6 text-black" /> Stays
+  <span className="flex items-center gap-4 text-gray-700text-gray-700">
+    <Bed className="w-6 h-6 text-gray-700text-gray-700" /> Stays
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-4 text-black">
-    <Mountain className="w-6 h-6 text-black" /> Activities
+  <span className="flex items-center gap-4 text-gray-700text-gray-700">
+    <Mountain className="w-6 h-6 text-gray-700text-gray-700" /> Activities
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -115,27 +116,27 @@ export default function Home() {
   </div>
 
   {/* Section Title */}
-  <h2 className="px-2 py-2 text-lg font-bold text-black">Settings</h2>
+  <h2 className="px-2 py-2 text-lg font-semibold text-gray-600">Settings</h2>
 
   {/* Settings Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 justify-between">
-      <span className="flex items-center gap-4 text-black">
-        <Globe className="w-6 h-6 text-black" /> Change language
+      <span className="flex items-center gap-4 text-gray-700">
+        <Globe className="w-6 h-6 text-gray-700" /> Change language
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 justify-between">
-      <span className="flex items-center gap-4 text-black">
-        <MapPin className="w-6 h-6 text-black" /> Country
+      <span className="flex items-center gap-4 text-gray-700">
+        <MapPin className="w-6 h-6 text-gray-700" /> Country
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200 justify-between">
-      <span className="flex items-center gap-4 text-black">
-        <DollarSign className="w-6 h-6 text-black" /> Display currency
+      <span className="flex items-center gap-4 text-gray-700">
+        <DollarSign className="w-6 h-6 text-gray-700" /> Display currency
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
@@ -153,24 +154,24 @@ export default function Home() {
 
         {/* Sign in on the right */}
       <button className="absolute right-4 top-7 text-cyan-600 font-medium">
-        Sign in
+       <p className="text-sm"> Sign in </p>
       </button>
       </section>
 
       {/* Main options */}
       <section className="grid grid-cols-3 gap-3 p-4 bg-[#e6f4f7]">
-        <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+        <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
           <Plane className="w-6 h-6 text-black" />
-          <span className="mt-2 text-sm font-medium text-gray-800">Flights</span>
+          <span className="mt-2 text-sm text-gray-800">Flights</span>
         </div>
-        <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+        <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
           <Bed className="w-6 h-6 text-black" />
-          <span className="mt-2 text-sm font-medium text-gray-800">Stays</span>
+          <span className="mt-2 text-sm text-gray-800">Stays</span>
         </div>
-        <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm relative">
+        <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm relative">
           <Mountain className="w-6 h-6 text-black" />
-          <span className="mt-2 text-sm font-medium text-gray-800">Activities</span>
-          <span className="absolute -top-2 right-8 bg-green-600 text-white text-xs px-2 py-0.5 rounded-lg">
+          <span className="mt-2 text-sm text-gray-800">Activities</span>
+          <span className="absolute -top-2 right-8 bg-green-500 text-white  text-xs px-2 py-1 rounded-sm">
             New
           </span>
         </div>
@@ -180,25 +181,25 @@ export default function Home() {
       <section className="p-4 bg-white">
         <h3 className="text-base text-black mb-5">More services</h3>
         <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+          <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
             <Repeat className="w-6 h-6 text-black" />
             <span className="mt-2 text-xs font-medium text-center text-gray-800">
               Airport transfer
             </span>
           </div>
-          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+          <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
            <Train className="w-6 h-6 text-black" />
             <span className="mt-2 text-xs font-medium text-center text-gray-800">
               Haramain Railway
             </span>
           </div>
-          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm">
+          <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
            <Car className="w-6 h-6 text-black" />
             <span className="mt-2 text-xs font-medium text-center text-gray-800">
               Car rental
             </span>
           </div>
-          <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm text-black">
+          <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm text-black">
             ⋯
             <span className="mt-2 text-xs font-medium text-center text-gray-800">
               See more
