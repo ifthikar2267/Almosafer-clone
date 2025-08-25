@@ -148,7 +148,7 @@ export default function Home() {
 
       {/* Greeting */}
       <section className="relative p-4 bg-[#e6f4f7]">
-        <h2 className="text-lg font-bold">Hi there</h2>
+        <h2 className="text-lg text-black font-bold">Hi there</h2>
         <p className="text-gray-600">What will you explore next?</p>
 
         {/* Sign in on the right */}
