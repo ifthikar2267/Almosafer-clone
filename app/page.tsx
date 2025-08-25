@@ -48,7 +48,7 @@ export default function Home() {
             </button>
 
             {/* Centered text */}
-            <h2 className="mx-auto text-lg font-semibold">Options</h2>
+            <h2 className="mx-auto text-lg font-semibold text-black">Options</h2>
           </div>
 
 
@@ -57,29 +57,29 @@ export default function Home() {
   {/* Top Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
-      <span className="flex items-center gap-4">
-        <House className="w-6 h-6" /> Home
+      <span className="flex items-center gap-4 text-black">
+        <House className="w-6 h-6 text-black" /> Home
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-3">
-    <User className="w-6 h-6" /> Profile
+  <span className="flex items-center gap-4 text-black">
+    <User className="w-6 h-6 text-black" /> Profile
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-3">
-    <CalendarCheck className="w-6 h-6" /> Bookings
+  <span className="flex items-center gap-4 text-black">
+    <CalendarCheck className="w-6 h-6 text-black" /> Bookings
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-3">
-    <Tag className="w-6 h-6" /> Offers
+  <span className="flex items-center gap-4 text-black">
+    <Tag className="w-6 h-6 text-black" /> Offers
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -87,27 +87,27 @@ export default function Home() {
   </div>
 
   {/* Section Title */}
-  <h2 className="px-2 py-2 text-lg font-bold">Our Products</h2>
+  <h2 className="px-2 py-2 text-lg font-bold text-black">Our Products</h2>
 
   {/* Product Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-3">
-    <Plane className="w-6 h-6" /> Flights
+  <span className="flex items-center gap-4 text-black">
+    <Plane className="w-6 h-6 text-black" /> Flights
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-3">
-    <Bed className="w-6 h-6" /> Stays
+  <span className="flex items-center gap-4 text-black">
+    <Bed className="w-6 h-6 text-black" /> Stays
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-3">
-    <Mountain className="w-6 h-6" /> Activities
+  <span className="flex items-center gap-4 text-black">
+    <Mountain className="w-6 h-6 text-black" /> Activities
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -115,27 +115,27 @@ export default function Home() {
   </div>
 
   {/* Section Title */}
-  <h2 className="px-2 py-2 text-lg font-bold">Settings</h2>
+  <h2 className="px-2 py-2 text-lg font-bold text-black">Settings</h2>
 
   {/* Settings Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 justify-between">
-      <span className="flex items-center gap-4">
-        <Globe className="w-6 h-6" /> Change language
+      <span className="flex items-center gap-4 text-black">
+        <Globe className="w-6 h-6 text-black" /> Change language
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 justify-between">
-      <span className="flex items-center gap-4">
-        <MapPin className="w-6 h-6" /> Country
+      <span className="flex items-center gap-4 text-black">
+        <MapPin className="w-6 h-6 text-black" /> Country
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
 
     <button className="w-full flex items-center gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200 justify-between">
-      <span className="flex items-center gap-4">
-        <DollarSign className="w-6 h-6" /> Display currency
+      <span className="flex items-center gap-4 text-black">
+        <DollarSign className="w-6 h-6 text-black" /> Display currency
       </span>
       <ChevronRight className="w-5 h-5 text-cyan-600" />
     </button>
@@ -210,7 +210,7 @@ export default function Home() {
       {/* Deals */}
       <section >
         <div className="flex items-center justify-between  p-4">
-          <h3 className="text-base font-semibold">
+          <h3 className="text-base font-semibold text-black">
             Top summer deals for you
           </h3>
           <button className="text-cyan-600 text-sm font-medium">View all</button>
@@ -229,7 +229,7 @@ export default function Home() {
               />
             </div>
             <div className="p-4">
-              <p className="font-medium">Summer bliss after the buzz</p>
+              <p className="font-medium text-black">Summer bliss after the buzz</p>
               <p className="text-sm text-gray-600">
                 Quieter escapes with up to ﷼ 5,000 OFF
               </p>
@@ -248,7 +248,7 @@ export default function Home() {
               />
             </div>
             <div className="p-4">
-              <p className="font-medium">Enjoy your stay</p>
+              <p className="font-medium text-black">Enjoy your stay</p>
               <p className="text-sm text-gray-600">
                 Discounts on top-rated hotels worldwide
               </p>
