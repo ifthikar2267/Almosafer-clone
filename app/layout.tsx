@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";  // 👈 import Cairo
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-// ✅ Load Cairo font
-const cairo = Cairo({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-cairo",
-  weight: ["300", "400", "500", "600", "700", "800", "900"], // choose weights you need
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"], // pick the weights you need
   display: "swap",
 });
 
@@ -25,7 +24,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={`${cairo.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
