@@ -39,7 +39,7 @@ export default function Home() {
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-        <div className="fixed inset-x-0 bottom-0 max-h-[100vh] bg-white shadow-lg p-6 animate-slide-up overflow-y-auto">
+        <div className="fixed inset-x-0 bottom-0 top-0 bg-white shadow-lg p-6 animate-slide-up overflow-y-auto">
 
           {/* Close Button */}
           <div className="relative flex items-center mb-6">
@@ -79,8 +79,8 @@ export default function Home() {
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-4 text-gray-700text-gray-700">
-    <Tag className="w-6 h-6 text-gray-700text-gray-700" /> Offers
+  <span className="flex items-center gap-4 text-gray-700">
+    <Tag className="w-6 h-6 text-gray-700" /> Offers
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -93,22 +93,22 @@ export default function Home() {
   {/* Product Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-gray-700text-gray-700">
-    <Plane className="w-6 h-6 text-gray-700text-gray-700" /> Flights
+  <span className="flex items-center gap-4 text-gray-700">
+    <Plane className="w-6 h-6 text-gray-700" /> Flights
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-gray-700text-gray-700">
-    <Bed className="w-6 h-6 text-gray-700text-gray-700" /> Stays
+  <span className="flex items-center gap-4 text-gray-700">
+    <Bed className="w-6 h-6 text-gray-700" /> Stays
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
-  <span className="flex items-center gap-4 text-gray-700text-gray-700">
-    <Mountain className="w-6 h-6 text-gray-700text-gray-700" /> Activities
+  <span className="flex items-center gap-4 text-gray-700">
+    <Mountain className="w-6 h-6 text-gray-700" /> Activities
   </span>
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
@@ -171,7 +171,7 @@ export default function Home() {
         <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm relative">
           <Mountain className="w-6 h-6 text-black" />
           <span className="mt-2 text-sm text-gray-800">Activities</span>
-          <span className="absolute -top-2 right-8 bg-green-500 text-white  text-xs px-2 py-1 rounded-sm">
+          <span className="absolute -top-2 right-8 bg-green-600 text-white  text-xs px-2 py-1 rounded-sm">
             New
           </span>
         </div>
