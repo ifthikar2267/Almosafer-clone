@@ -12,7 +12,7 @@ export default function Home() {
    const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <main className="bg-white min-h-screen font-sans">
+    <main className="bg-white min-h-screen font-sans overflow-y-auto no-scrollbar">
       {/* Header */}
        <header className="relative flex items-center justify-center p-4 bg-[#e6f4f7] shadow-sm">
         <button
@@ -53,7 +53,7 @@ export default function Home() {
 
 
           {/* Menu Items */}
-          <nav className="space-y-4">
+          <nav className="space-y-4 space-y-4 overflow-y-auto h-[500px] no-scrollbar">
   {/* Top Menu */}
   <div className="divide-y divide-gray-200">
     <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
@@ -170,7 +170,7 @@ export default function Home() {
         <div className="rounded-xl bg-white p-4 flex flex-col items-center shadow-sm relative">
           <Mountain className="w-6 h-6" />
           <span className="mt-2 text-sm font-medium">Activities</span>
-          <span className="absolute -top-2 right-8 bg-green-500 text-white text-xs px-2 py-0.5 rounded-lg">
+          <span className="absolute -top-2 right-8 bg-green-600 text-white text-xs px-2 py-0.5 rounded-lg">
             New
           </span>
         </div>

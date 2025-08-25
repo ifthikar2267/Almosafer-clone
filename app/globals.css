@@ -24,6 +24,11 @@ body {
   font-family: var(--font-cairo), sans-serif, Arial, Helvetica;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 /* globals.css */
 
