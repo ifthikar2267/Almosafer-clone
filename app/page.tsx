@@ -1,10 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Plane, Bed, Mountain, Search, User, CalendarCheck, Tag, Repeat, Train, Car, Globe, MapPin, DollarSign, ChevronRight } from "lucide-react";
+import Stay from "./stay/page";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -25,7 +26,7 @@ export default function Home() {
       <Image
         src="/Headerlogo.png"
         alt="Logo"
-        width={135}
+        width={145}
         height={60}
         priority
       />
@@ -43,7 +44,6 @@ export default function Home() {
 
           {/* Close Button */}
           <div className="relative flex items-center mb-6">
-            {/* Close button on the left */}
             <button onClick={() => setIsOpen(false)} className="absolute left-0">
               <XMarkIcon className="w-6 h-6 text-cyan-600" />
             </button>
@@ -57,12 +57,14 @@ export default function Home() {
           <nav className="flex-1 space-y-4 overflow-y-auto no-scrollbar">
   {/* Top Menu */}
   <div className="divide-y divide-gray-200">
-    <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
-      <span className="flex items-center gap-4 text-gray-700">
-        <Search className="w-6 h-6 text-gray-700" /> Home
-      </span>
-      <ChevronRight className="w-5 h-5 text-cyan-600" />
-    </button>
+   <Link href="/">
+      <button className="w-full flex items-center justify-between px-1 p-4 hover:bg-gray-100">
+          <span className="flex items-center gap-4 text-gray-700">
+            <Search className="w-6 h-6 text-gray-700" /> Home
+          </span>
+          <ChevronRight className="w-5 h-5 text-cyan-600" />
+        </button>
+   </Link>  
 
     <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
   <span className="flex items-center gap-4 text-gray-700">
@@ -99,12 +101,14 @@ export default function Home() {
   <ChevronRight className="w-5 h-5 text-cyan-600" />
 </button>
 
-<button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-gray-700">
-    <Bed className="w-6 h-6 text-gray-700" /> Stays
-  </span>
-  <ChevronRight className="w-5 h-5 text-cyan-600" />
-</button>
+                <Link href="/stay"> 
+                  <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
+                    <span className="flex items-center gap-4 text-gray-700">
+                        <Bed className="w-6 h-6 text-gray-700" /> Stays
+                    </span>
+                    <ChevronRight className="w-5 h-5 text-cyan-600" />
+                    </button>
+                </Link>
 
 <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
   <span className="flex items-center gap-4 text-gray-700">
@@ -164,10 +168,12 @@ export default function Home() {
           <Plane className="w-6 h-6 text-black" />
           <span className="mt-2 text-sm text-gray-800">Flights</span>
         </div>
-        <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm">
-          <Bed className="w-6 h-6 text-black" />
-          <span className="mt-2 text-sm text-gray-800">Stays</span>
-        </div>
+         <Link href="/stay">
+            <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm hover:shadow-md transition">
+              <Bed className="w-6 h-6 text-black" />
+              <span className="mt-2 text-sm text-gray-800">Stays</span>
+            </div>
+          </Link>
         <div className="rounded-xl bg-white p-6 flex flex-col items-center shadow-sm relative">
           <Mountain className="w-6 h-6 text-black" />
           <span className="mt-2 text-sm text-gray-800">Activities</span>

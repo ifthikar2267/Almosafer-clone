@@ -60,4 +60,17 @@ html {
   scrollbar-width: none;     /* Firefox */
 }
 
+.react-datepicker {
+  font-family: inherit;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.react-datepicker__header {
+  background-color: #f9fafb;
+  border-bottom: 1px solid #eee;
+}
+.react-datepicker__day--selected {
+  background-color: #ef4444 !important; /* Tailwind red-500 */
+  color: white;
+}
 
