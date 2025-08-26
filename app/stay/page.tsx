@@ -151,7 +151,7 @@ export default function Stay () {
 
                         <div className="max-w-md mx-auto p-4 bg-white">
                         {/* Heading */}
-                        <p className="text-center text-gray-600 mb-8 text-sm">
+                        <p className="text-center text-gray-600 mb-6 text-sm">
                             More than 1 million properties at your fingertips!
                         </p>
 
@@ -190,7 +190,7 @@ export default function Stay () {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-7 w-full bg-red-600 text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
+                        <button className="mt-7 w-full bg-red-400 text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
                             <Search/> Search stays
                         </button>
                         </div>
