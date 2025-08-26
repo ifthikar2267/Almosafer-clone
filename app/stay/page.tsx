@@ -28,7 +28,7 @@ export default function Stay () {
                         <ArrowLeftIcon className="h-6 w-6 text-cyan-600" />
                     </button>
                 {/* Centered Logo */}
-                <h1 className="text-xl p-2">Properties search</h1>
+                <h1 className="text-xl p-2 text-black">Properties search</h1>
                 </header>
 
                     <Dialog
@@ -149,7 +149,7 @@ export default function Stay () {
                              </div>
                         </Dialog>
 
-                        <div className="max-w-md mx-auto p-4">
+                        <div className="max-w-md mx-auto p-4 bg-white">
                         {/* Heading */}
                         <p className="text-center text-gray-600 mb-8 text-sm">
                             More than 1 million properties at your fingertips!
@@ -172,7 +172,7 @@ export default function Stay () {
                                 <p className="font-medium">Tue 09 Sep</p>
                                 </div>
                             </div>
-                            <span className="text-gray-400 text-3xl">{">"}</span>
+                            <span className="text-gray-300 text-3xl">{">"}</span>
                             <div>
                                 <p className="text-sm text-gray-500">Check out</p>
                                 <p className="font-medium">Wed 10 Sep</p>
