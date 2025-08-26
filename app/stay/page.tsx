@@ -14,7 +14,7 @@ export default function Stay () {
     const router = useRouter();
 
     return (
-        <div>
+        <div className="bg-white min-h-screen">
             <header className="relative flex items-center justify-center p-4 bg-[#ffffff]">
                     <button
                     onClick={() => setIsOpen(true)}
@@ -28,7 +28,7 @@ export default function Stay () {
                         <ArrowLeftIcon className="h-6 w-6 text-cyan-600" />
                     </button>
                 {/* Centered Logo */}
-                <h1 className="text-xl p-2 text-black">Properties search</h1>
+                <h1 className="text-lg p-2 text-black">Properties search</h1>
                 </header>
 
                     <Dialog
@@ -156,7 +156,7 @@ export default function Stay () {
                         </p>
 
                         {/* Card */}
-                        <div className="border border-gray-300 rounded-xl p-4 space-y-4 shadow-sm">
+                        <div className="border border-gray-300 rounded-xl p-4 space-y-4">
                             {/* Destination */}
                             <div className="flex items-center space-x-3">
                             <span className="text-gray-500"><MapPin/></span>
@@ -169,25 +169,28 @@ export default function Stay () {
                                 <span className="text-gray-500 "><CalendarCheck/></span>
                                 <div>
                                 <p className="text-sm text-gray-500">Check in</p>
-                                <p className="font-medium">Tue 09 Sep</p>
+                                <p className="font-medium text-gray-600">Tue 09 Sep</p>
                                 </div>
                             </div>
                             <span className="text-gray-300 text-3xl">{">"}</span>
                             <div>
                                 <p className="text-sm text-gray-500">Check out</p>
-                                <p className="font-medium">Wed 10 Sep</p>
+                                <p className="font-medium text-gray-600">Wed 10 Sep</p>
                             </div>
                             </div>
 
                             {/* Guests */}
                             <div className="flex items-center space-x-2 border-t border-gray-300 pt-3">
                             <span className="text-gray-500"><User/></span>
-                            <p className="text-gray-700">1 Room, 2 Adults</p>
+                           <div>
+                             <p className="text-sm text-gray-500">Guests</p>
+                            <p className="text-gray-600 text-md">1 Room, 2 Adults</p>
+                           </div>
                             </div>
                         </div>
 
                         {/* Button */}
-                        <button className="mt-7 w-full bg-red-500 text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
+                        <button className="mt-7 w-full bg-red-600 text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
                             <Search/> Search stays
                         </button>
                         </div>
