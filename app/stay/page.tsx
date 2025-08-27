@@ -7,11 +7,22 @@ import { useRouter } from "next/navigation";
 import { Plane, Bed, Mountain, Search, User, CalendarCheck, Tag, Globe, MapPin, DollarSign, ChevronRight } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
+import DestinationSearch from "../../component/DestinationSearch";
+import Guests from "../../component/Guests";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Stay () {
 
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
+     const today = new Date();
+    const [checkIn, setCheckIn] = useState(today);
+    const [checkOut, setCheckOut] = useState( new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
+    const [isGuestsOpen, setIsGuestsOpen] = useState(false);
+    const [rooms, setRooms] = useState([{ adults: 2, children: 0 }]);
+    
+
 
     return (
         <div className="bg-white min-h-screen">
@@ -145,7 +156,6 @@ export default function Stay () {
                 </div>
                 </nav>
                 
-                
                              </div>
                         </Dialog>
 
@@ -156,11 +166,12 @@ export default function Stay () {
                         </p>
 
                         {/* Card */}
-                        <div className="border border-gray-300 rounded-xl p-4 space-y-4">
+                        <div className="border border-gray-300 rounded-xl p-3 space-y-1">
                             {/* Destination */}
+                            
                             <div className="flex items-center space-x-3">
                             <span className="text-gray-500"><MapPin/></span>
-                            <span className="text-gray-500">Destination</span>
+                            <DestinationSearch />
                             </div>
 
                             {/* Check-in / Check-out */}
@@ -168,29 +179,64 @@ export default function Stay () {
                             <div className="flex items-center space-x-2">
                                 <span className="text-gray-500 "><CalendarCheck/></span>
                                 <div>
-                                <p className="text-sm text-gray-500">Check in</p>
-                                <p className="font-medium text-gray-600">Tue 09 Sep</p>
+                                <p className="text-sm text-gray-500 px-2">Check in</p>
+                                 <DatePicker
+                                    selected={checkIn}
+                                    onChange={(date) => {if (date) setCheckIn(date)}}
+                                    selectsStart
+                                    startDate={checkIn}
+                                    endDate={checkOut}
+                                    minDate={new Date()}
+                                    dateFormat="EEE dd MMM"
+                                    className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full"
+                                    />
                                 </div>
                             </div>
-                            <span className="text-gray-300 text-3xl">{">"}</span>
+                            <span className="text-gray-300 text-3xl pb-4">{">"}</span>
                             <div>
-                                <p className="text-sm text-gray-500">Check out</p>
-                                <p className="font-medium text-gray-600">Wed 10 Sep</p>
+                                <p className="text-sm text-gray-500 px-7">Check out</p>
+                                <DatePicker
+                                selected={checkOut}
+                                onChange={(date) => {
+                                        if (date) setCheckOut(date);
+                                    }}
+                                selectsEnd
+                                startDate={checkIn}
+                                endDate={checkOut}
+                                minDate={checkIn || new Date()}
+                                 dateFormat="EEE dd MMM"
+                                className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full px-7"
+                                />
                             </div>
                             </div>
 
                             {/* Guests */}
-                            <div className="flex items-center space-x-2 border-t border-gray-300 pt-3">
-                            <span className="text-gray-500"><User/></span>
-                           <div>
-                             <p className="text-sm text-gray-500">Guests</p>
-                            <p className="text-gray-600 text-md">1 Room, 2 Adults</p>
-                           </div>
-                            </div>
+                            <div
+        className="flex items-center space-x-2 border-t border-gray-300 pt-3 cursor-pointer"
+        onClick={() => setIsGuestsOpen(!isGuestsOpen)} 
+      >
+        <span className="text-gray-500">
+          <User />
+        </span>
+        <div>
+          <p className="text-sm text-gray-500">Guests</p>
+         <p className="text-gray-600 text-md">
+          {rooms.length} Room{rooms.length > 1 ? "s" : ""},{" "}
+          {rooms.reduce((sum, r) => sum + r.adults, 0)} Adults
+          {rooms.reduce((sum, r) => sum + r.children, 0) > 0 && (
+            <> , {rooms.reduce((sum, r) => sum + r.children, 0)} Children</>
+          )}
+        </p>
+        </div>
+      </div>
+       {isGuestsOpen && (
+          <Guests rooms={rooms} setRooms={setRooms}           isOpened={isGuestsOpen} setIsOpened={setIsGuestsOpen}
+/>
+      )}
                         </div>
 
                         {/* Button */}
-                        <button className="mt-7 w-full bg-red-400 text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
+                        <button className="mt-7 w-full bg-[#ee4056] text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
                             <Search/> Search stays
                         </button>
                         </div>
