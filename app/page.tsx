@@ -160,7 +160,7 @@ export default function Home() {
         width={30}
         height={60}
         priority
-        className="rounded-xl"
+        className="rounded-full"
       />
       </div>
         <h2 className="text-md text-black font-bold px-9">Hi there</h2>
