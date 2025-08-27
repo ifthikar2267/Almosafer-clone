@@ -1,7 +1,7 @@
 "use client";
 
 //import { useState } from "react";
-//import { User } from "lucide-react";
+import { Bed } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -75,7 +75,7 @@ export default function Guests({ rooms, setRooms, isOpened, setIsOpened }) {
             <button onClick={() => setIsOpened(false)} className="absolute left-0">
               <XMarkIcon className="w-6 h-6 text-cyan-600" />
             </button>
-            <h2 className="mx-auto text-lg font-semibold text-gray-600">
+            <h2 className="mx-auto text-lg font-semibold text-gray-800">
               Guests
             </h2>
           </div>
@@ -87,8 +87,9 @@ export default function Guests({ rooms, setRooms, isOpened, setIsOpened }) {
           {/* Rooms */}
           {rooms.map((room, index) => (
             <div key={index} className="border border-gray-300 rounded-xl p-3 mb-3">
-              <div className="flex justify-between items-center mb-2">
-                <p className="font-medium">Room {index + 1}</p>
+              <div className="flex items-center mb-2 relative gap-3">
+                 <Bed className="absolute-left text-black"/>
+                <p className="font-medium text-black">Room {index + 1}</p>
                 {rooms.length > 1 && (
                   <button
                     onClick={() => removeRoom(index)}
@@ -101,17 +102,17 @@ export default function Guests({ rooms, setRooms, isOpened, setIsOpened }) {
 
               {/* Adults */}
               <div className="flex justify-between items-center mt-4">
-                <span>
+                <span className="text-black">
                   Adults <span className="text-gray-400">(Age 12+)</span>
                 </span>
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={() => updateAdults(index, -1)}
-                    className="px-3 py-1 border rounded-full"
+                    className="px-3 py-1 border border-gray-600 rounded-full"
                   >
-                    -
+                   <span className="text-gray-600">-</span>
                   </button>
-                  <span>{room.adults}</span>
+                  <span className="text-black">{room.adults}</span>
                   <button
                     onClick={() => updateAdults(index, 1)}
                     className="px-3 py-1 border border-cyan-600 rounded-full"
@@ -123,17 +124,17 @@ export default function Guests({ rooms, setRooms, isOpened, setIsOpened }) {
 
               {/* Children */}
               <div className="flex justify-between items-center mt-4 border-t border-gray-300">
-                <span className="mt-5">
+                <span className="mt-5 text-black">
                   Children <span className="text-gray-400">(Age 0-11)</span>
                 </span>
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={() => updateChildren(index, -1)}
-                    className="px-3 py-1 border rounded-full mt-5"
+                    className="px-3 py-1 border border-gray-600 rounded-full mt-5"
                   >
-                    -
+                     <span className="text-gray-600">-</span>
                   </button>
-                  <span className="mt-5">{room.children}</span>
+                  <span className="mt-5 text-black">{room.children}</span>
                   <button
                     onClick={() => updateChildren(index, 1)}
                     className="px-3 py-1 border border-cyan-600 rounded-full mt-5"
@@ -159,7 +160,7 @@ export default function Guests({ rooms, setRooms, isOpened, setIsOpened }) {
        
              <button
                 onClick={() => setIsOpened(false)}
-                className="w-full bg-cyan-600 text-white py-2 rounded-full fixed bottom-15  left-1/2 transform -translate-x-1/2 max-w-xs"
+                className="w-full bg-cyan-600 text-white py-3 rounded-full fixed bottom-5 left-1/2 transform -translate-x-1/2 max-w-xs"
                 >
                 Apply
                 </button>
