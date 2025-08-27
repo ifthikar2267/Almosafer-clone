@@ -153,8 +153,18 @@ export default function Home() {
 
       {/* Greeting */}
       <section className="relative p-4 bg-[#e6f4f7]">
-        <h2 className="text-md text-black font-bold">Hi there</h2>
-        <p className="text-gray-600 text-sm">What will you explore next?</p>
+        <div className="absolute">
+        <Image
+        src="/almoLogo.jpeg"
+        alt="Logo"
+        width={30}
+        height={60}
+        priority
+        className="rounded-xl"
+      />
+      </div>
+        <h2 className="text-md text-black font-bold px-9">Hi there</h2>
+        <p className="text-gray-600 text-sm px-9">What will you explore next?</p>
 
         {/* Sign in on the right */}
       <button className="absolute right-4 top-7 text-cyan-600 font-medium">
