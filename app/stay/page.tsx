@@ -168,13 +168,13 @@ export default function Stay () {
                         </p>
 
                         {/* Card */}
-                        <div className="border border-gray-300 rounded-xl p-3 space-y-1">
+                        <div className="border border-gray-300 rounded-xl p-2">
                             {/* Destination */}
                             
                             <div className="flex items-center space-x-1">
                             <span className="text-gray-500"><MapPin/></span>
                             <div
-        className="flex items-center p-3 cursor-pointer"
+        className="p-3 flex items-center w-full cursor-pointer"
         onClick={() => setIsOpened(true)}
       >
         {destination ? (
