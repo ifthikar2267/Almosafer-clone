@@ -21,7 +21,9 @@ export default function Stay () {
     const [checkOut, setCheckOut] = useState( new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
     const [isGuestsOpen, setIsGuestsOpen] = useState(false);
     const [rooms, setRooms] = useState([{ adults: 2, children: 0 }]);
-    
+    const [isOpened, setIsOpened] = useState(false);
+    const [destination, setDestination] = useState("");
+
 
 
     return (
@@ -169,9 +171,34 @@ export default function Stay () {
                         <div className="border border-gray-300 rounded-xl p-3 space-y-1">
                             {/* Destination */}
                             
-                            <div className="flex items-center space-x-3">
+                            <div className="flex items-center space-x-1">
                             <span className="text-gray-500"><MapPin/></span>
-                            <DestinationSearch />
+                            <div
+        className="flex items-center p-3 cursor-pointer"
+        onClick={() => setIsOpened(true)}
+      >
+        {destination ? (
+          <div className="space-x-2">
+             <p className="text-sm text-gray-500 ">Destination</p>
+            <span className="text-gray-800">{destination}</span>
+          </div>
+        ) : (
+            <div>
+                 <p className="text-sm text-gray-500 ">Destination</p>
+                <span className={destination ? "text-gray-800" : "text-gray-800"}>
+                    {destination || "Dubai, AE"}
+                </span>
+            </div>
+          
+        )}
+      </div>
+
+      {/* Modal */}
+      <DestinationSearch
+        isOpened={isOpened}
+        setIsOpened={setIsOpened}
+        onSelect={setDestination}
+      />
                             </div>
 
                             {/* Check-in / Check-out */}
@@ -212,7 +239,7 @@ export default function Stay () {
 
                             {/* Guests */}
                             <div
-        className="flex items-center space-x-2 border-t border-gray-300 pt-3 cursor-pointer"
+        className="flex items-center space-x-4 border-t border-gray-300 pt-3 cursor-pointer"
         onClick={() => setIsGuestsOpen(!isGuestsOpen)} 
       >
         <span className="text-gray-500">
@@ -220,7 +247,7 @@ export default function Stay () {
         </span>
         <div>
           <p className="text-sm text-gray-500">Guests</p>
-         <p className="text-gray-600 text-md">
+         <p className="text-gray-800 text-md">
           {rooms.length} Room{rooms.length > 1 ? "s" : ""},{" "}
           {rooms.reduce((sum, r) => sum + r.adults, 0)} Adults
           {rooms.reduce((sum, r) => sum + r.children, 0) > 0 && (
