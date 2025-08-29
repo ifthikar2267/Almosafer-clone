@@ -263,9 +263,18 @@ export default function Stay () {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-7 w-full bg-[#ee4056] text-white py-3 rounded-full font-medium flex items-center justify-center gap-3">
-                            <Search/> Search stays
-                        </button>
+                        <button
+  onClick={() => {
+    if (destination) {
+      const city = destination.split(",")[0].trim();
+      router.push(`/city?city=${encodeURIComponent(city)}`);
+    }
+  }}
+  className="mt-7 w-full bg-[#ee4056] text-white py-3 rounded-full font-medium flex items-center justify-center gap-3"
+>
+  <Search /> Search stays
+</button>
+
                         </div>
 
 
