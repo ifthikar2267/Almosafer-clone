@@ -1,7 +1,9 @@
-"use client";
-
+// app/city/page.tsx
 import { Suspense } from "react";
-import City from "./city";
+import dynamic from "next/dynamic";
+
+const City = dynamic(() => import("./city"), { ssr: false });
+
 
 export default function Page() {
   return (
