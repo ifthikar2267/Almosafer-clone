@@ -12,6 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Almosafer",
   description: "Middle East's leading travel brand",
+  icons: {
+    icon: "/almoLogo.jpeg",      // path to your logo/favicon
+    apple: "/almoLogo.jpeg",     // optional for Apple devices
+    shortcut: "/almoLogo.jpeg",  // optional shortcut icon
+  },
 };
 
 export default function RootLayout({
