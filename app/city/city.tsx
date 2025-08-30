@@ -26,7 +26,9 @@ export default function City({ city }: {city: string}) {
 
 
 
-  useEffect(() => {
+  useEffect(() => {    
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+
     fetch(process.env.NEXT_PUBLIC_API_URL + "/posts")
       .then((res) => res.json())
       .then((res: Post[]) => {
@@ -49,7 +51,7 @@ export default function City({ city }: {city: string}) {
 
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 bg-white">
         <div className="p-5">
             <button 
                              onClick={() => router.back()}
