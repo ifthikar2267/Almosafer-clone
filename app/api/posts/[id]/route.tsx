@@ -4,12 +4,12 @@ import Post from "../../../../models/postModel";
 
 export async function GET(
 req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await dbConnect();
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const post = await Post.findById(id);
 
     if (!post) {
