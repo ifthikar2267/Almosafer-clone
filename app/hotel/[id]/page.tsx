@@ -191,31 +191,31 @@ useEffect(() => {
 
       {/* Facilities Section */}
       <div className="px-4">
-        <h2 className="text-black text-xl font-semibold pt-6">Amenities</h2>
-        <p className="text-gray-600">Amenities for {post.title}</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 pt-4">
+        <h2 className="text-black text-lg font-semibold pt-2">Amenities</h2>
+        <p className="text-gray-600 text-md">Amenities for {post.title}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
           <div className="flex items-center gap-2">
             <Wifi className="h-7 w-7 text-cyan-600" />
-            <span className="text-gray-800">Wi-Fi</span>
+            <span className="text-gray-800 text-md">Wi-Fi</span>
           </div>
           <div className="flex items-center gap-2">
             <Dumbbell className="h-7 w-7 text-cyan-600" />
-            <span className="text-gray-800">Gym/Fitness</span>
+            <span className="text-gray-800 text-md">Gym/Fitness</span>
           </div>
           <div className="flex items-center gap-2">
             <CircleParking className="h-7 w-7 text-cyan-600" />
-            <span className="text-gray-800">Parking</span>
+            <span className="text-gray-800 text-md">Parking</span>
           </div>
           <div className="flex items-center gap-2">
             <WavesLadder className="h-7 w-7 text-cyan-600" />
-            <span className="text-gray-800">Swimming Pool</span>
+            <span className="text-gray-800 text-md">Swimming Pool</span>
           </div>
         </div>
       </div>
 
       {/* Room selection */}
       <div className="p-4 border-t border-gray-300 mt-6">
-        <h1 className="text-black text-xl pb-4">Select a room</h1>
+        <h1 className="text-black text-lg pb-4">Select a room</h1>
 
         <div className="flex flex-row sm:flex-row gap-2">
         {/* Check-in & Check-out in one pill */}
@@ -279,12 +279,12 @@ useEffect(() => {
       )}
             </div>
             <div>
-                <h1 className="text-black p-4 text-xl">About the property</h1>
-                <p className="text-gray-600 p-3">Nestled in the heart of the city, this property blends comfort, convenience, and modern style. Whether you’re here for business or leisure, you’ll enjoy spacious rooms, attentive service, and easy access to nearby attractions. Designed with both relaxation and productivity in mind, the hotel ensures a memorable stay for every guest.</p>
+                <h1 className="text-black p-4 text-lg">About the property</h1>
+                <p className="text-gray-600 text-sm px-5">Nestled in the heart of the city, this property blends comfort, convenience, and modern style. Whether you’re here for business or leisure, you’ll enjoy spacious rooms, attentive service, and easy access to nearby attractions. Designed with both relaxation and productivity in mind, the hotel ensures a memorable stay for every guest.</p>
             </div>
 
              <div className="p-4 pb-8">
-        <h2 className="text-black text-xl mb-4">FAQs</h2>
+        <h2 className="text-black text-xl mb-4 px-2">FAQs</h2>
         <div className="space-y-1 border border-gray-300 rounded-lg">
           {faqs.map((faq, index) => (
             <div key={index}>
@@ -304,15 +304,15 @@ useEffect(() => {
       </div>
 
       <div>
-        <h1 className="text-black px-5 text-xl pb-4">Similar properties</h1>
+        <h1 className="text-black px-5 text-lg pb-2">Similar properties</h1>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto no-scrollbar p-4 snap-x snap-mandatory pb-5">
+      <div className="flex gap-4 overflow-x-auto no-scrollbar p-4 snap-x snap-mandatory pb-2">
   {similarPosts.length > 0 ? (
     similarPosts.map((item) => (
       <div
         key={item._id}
-             className="snap-center flex-shrink-0 w-[90%] sm:w-[250px] md:w-[300px] rounded-xl bg-white border border-gray-300"
+             className="snap-center flex-shrink-0 w-[80%] sm:w-[250px] md:w-[300px] rounded-xl bg-white border border-gray-300"
         onClick={() => router.push(`/hotel/${item._id}`)}
       >
         <Swiper
@@ -372,7 +372,7 @@ useEffect(() => {
       {/* WhatsApp */}
       <div className="flex items-center justify-between cursor-pointer">
         <div className="flex items-center space-x-3">
-           <FaWhatsapp className="text-black-500 text-2xl" />
+           <FaWhatsapp className="text-black text-2xl" />
           <div>
             <p className="font-medium text-black">WhatsApp</p>
             <p className="text-gray-500 text-sm">+966 55 440 0000</p>
@@ -384,7 +384,7 @@ useEffect(() => {
       {/* Call */}
       <div className="flex items-center justify-between cursor-pointer border-t border-gray-300">
         <div className="flex items-center space-x-3 pt-4">
-          <Phone className="text-black-500" />
+          <Phone className="text-black" />
           <div>
             <p className="font-medium text-black">Call us</p>
             <p className="text-gray-500 text-sm">920000997</p>
@@ -396,7 +396,7 @@ useEffect(() => {
       {/* Email */}
       <div className="flex items-center justify-between cursor-pointer border-t border-gray-300">
         <div className="flex items-center space-x-3 pt-4">
-          <Mail className="text-black-500" />
+          <Mail className="text-black" />
           <div>
             <p className="font-medium text-black">Email us</p>
             <p className="text-gray-500 text-sm">support@almosafer.com</p>
@@ -408,7 +408,7 @@ useEffect(() => {
       {/* Visit */}
       <div className="flex items-center justify-between cursor-pointer border-t border-gray-300">
         <div className="flex items-center space-x-3 pt-4">
-          <Store className="text-black-500" />
+          <Store className="text-black" />
           <div>
             <p className="font-medium text-black">Visit Us now</p>
             <p className="text-gray-500 text-sm">Find a branch</p>
