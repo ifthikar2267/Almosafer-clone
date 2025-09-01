@@ -1,5 +1,6 @@
+import { NextRequest } from "next/server";
 
-export async function GET(req) {
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("q");
 
@@ -12,7 +13,7 @@ export async function GET(req) {
     {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,
+        "X-RapidAPI-Key": process.env.RAPIDAPI_KEY || "",
         "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
       },
     }
