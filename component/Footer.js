@@ -5,7 +5,7 @@ import { FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/f
 import { FaXTwitter } from "react-icons/fa6";
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 text-gray-700 text-sm">
+    <footer className="bg-white text-gray-700 text-sm">
       <div className="max-w-7xl mx-auto px-6 py-10">
      {/* Top Links */}
 <div className="space-y-4 mb-8">
