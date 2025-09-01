@@ -73,7 +73,7 @@ export default function HotelDetail() {
       .catch((err) => console.error("Fetch error:", err));
   }, [id]);
 
-  if (!post) return <div>Loading...</div>;
+  if (!post) return <div className="bg-white text-black">Loading...</div>;
 
   return (
     <div className="bg-white overflow-y-auto no-scrollbar overflow-x-hidden">
@@ -114,7 +114,7 @@ export default function HotelDetail() {
 
       {/* Hotel Title & Location */}
       <div className="p-5 relative">
-        <h1 className="text-2xl font-bold">{post.title}</h1>
+        <h1 className="text-xl text-black font-bold">{post.title}</h1>
         <p className="text-gray-600 flex items-center gap-1 pt-1">
           <MapPin className="h-4 w-4" /> {post.location}
         </p>
@@ -126,20 +126,20 @@ export default function HotelDetail() {
         <p className="text-gray-600">Amenities for {post.title}</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 pt-4">
           <div className="flex items-center gap-2">
-            <Wifi className="h-7 w-7 text-green-600" />
-            <span>Wi-Fi</span>
+            <Wifi className="h-7 w-7 text-cyan-600" />
+            <span className="text-gray-800">Wi-Fi</span>
           </div>
           <div className="flex items-center gap-2">
-            <Dumbbell className="h-7 w-7 text-green-600" />
-            <span>Gym/Fitness</span>
+            <Dumbbell className="h-7 w-7 text-cyan-600" />
+            <span className="text-gray-800">Gym/Fitness</span>
           </div>
           <div className="flex items-center gap-2">
-            <CircleParking className="h-7 w-7 text-green-600" />
-            <span>Parking</span>
+            <CircleParking className="h-7 w-7 text-cyan-600" />
+            <span className="text-gray-800">Parking</span>
           </div>
           <div className="flex items-center gap-2">
-            <WavesLadder className="h-7 w-7 text-green-600" />
-            <span>Swimming Pool</span>
+            <WavesLadder className="h-7 w-7 text-cyan-600" />
+            <span className="text-gray-800">Swimming Pool</span>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@ export default function HotelDetail() {
               endDate={checkOut}
               minDate={new Date()}
               dateFormat="dd MMM"
-              className="w-20 text-[#009688] font-medium text-sm bg-transparent focus:outline-none px-4"
+              className="w-20 text-cyan-600 font-medium text-sm bg-transparent focus:outline-none px-4"
             />
           </div>
 
@@ -180,7 +180,7 @@ export default function HotelDetail() {
               endDate={checkOut}
               minDate={checkIn || new Date()}
               dateFormat="dd MMM"
-              className="w-20 text-[#009688] font-medium text-sm bg-transparent focus:outline-none px-4"
+              className="w-20 text-cyan-600 font-medium text-sm bg-transparent focus:outline-none px-4"
             />
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function HotelDetail() {
           className="border border-gray-300 rounded-2xl p-4 cursor-pointer flex flex-row items-center justify-center w-40 sm:w-auto"
           onClick={() => setIsGuestsOpen(true)}
         >
-          <p className="text-[#009688] font-medium text-xs">
+          <p className="text-cyan-600 font-medium text-xs">
             {rooms.length} ROOM{rooms.length > 1 ? "S" : ""},{" "}
             {rooms.reduce((sum, r) => sum + r.adults, 0)} ADULTS
           </p>

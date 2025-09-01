@@ -114,81 +114,81 @@ export default function City({ city, rooms, checkIn, checkOut }: CityProps) {
       <StayPage isOpened={isOpened} setIsOpened={setIsOpened} />
  
 </header>
-
-      {posts.map((post) => (
-        <Link
-  key={post._id}
-  href={`/hotel/${post._id}?city=${encodeURIComponent(city)}&checkIn=${encodeURIComponent(
-    checkIn ? checkIn.toISOString() : ""
-  )}&checkOut=${encodeURIComponent(
-    checkOut ? checkOut.toISOString() : ""
-  )}&rooms=${encodeURIComponent(JSON.stringify(rooms))}`}
->
-        <div
-          key={post._id}
-          className="bg-white rounded-2xl border border-gray-300 overflow-hidden hover:shadow-sm transition"
-        >
-          {/* Hotel Image */}
-           <Swiper
-            modules={[Pagination]}
-            spaceBetween={0}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            className="w-full h-48 bg-white text-white"
+        
+        {posts.map((post) => (
+          <Link
+    key={post._id}
+    href={`/hotel/${post._id}?city=${encodeURIComponent(city)}&checkIn=${encodeURIComponent(
+      checkIn ? checkIn.toISOString() : ""
+    )}&checkOut=${encodeURIComponent(
+      checkOut ? checkOut.toISOString() : ""
+    )}&rooms=${encodeURIComponent(JSON.stringify(rooms))}`}
+  >
+          <div
+            key={post._id}
+            className="bg-white rounded-2xl border border-gray-300 overflow-hidden hover:shadow-sm transition"
           >
-             <style jsx global>{`
-                .swiper-pagination-bullet {
-                background: white !important;
-                opacity: 0.5 !important;
-                }
-                .swiper-pagination-bullet-active {
-                background: white !important;
-                opacity: 1 !important;
-                }
-            `}</style>
-            {post.images.map((img, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={img}
-                  alt={`${post.title} - ${index + 1}`}
-                  className="w-full h-48 object-cover"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            {/* Hotel Image */}
+            <Swiper
+              modules={[Pagination]}
+              spaceBetween={0}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              className="w-full h-48 bg-white text-white"
+            >
+              <style jsx global>{`
+                  .swiper-pagination-bullet {
+                  background: white !important;
+                  opacity: 0.5 !important;
+                  }
+                  .swiper-pagination-bullet-active {
+                  background: white !important;
+                  opacity: 1 !important;
+                  }
+              `}</style>
+              {post.images.map((img, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={img}
+                    alt={`${post.title} - ${index + 1}`}
+                    className="w-full h-48 object-cover"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-          {/* Content */}
-          <div className="p-4">
-            <h2 className="text-lg font-semibold text-gray-800">
-              {post.title}
-            </h2>
-            <p className="text-sm text-gray-500">{post.star}-star Hotel <span className="text-black font-bold px-1">•</span>  {post.location}</p>
-            <p className="text-gray-600 text-md">{post.city}, {post.country}</p>
+            {/* Content */}
+            <div className="p-4">
+              <h2 className="text-lg font-semibold text-gray-800">
+                {post.title}
+              </h2>
+              <p className="text-sm text-gray-500">{post.star}-star Hotel <span className="text-black font-bold px-1">•</span>  {post.location}</p>
+              <p className="text-gray-600 text-md">{post.city}, {post.country}</p>
 
-            {/* Rating */}
-            {/* <div className="flex items-center mt-2">
-              <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
-                {post.star} ⭐ 
-              </span> */}
-              {/* <span className="ml-2 text-gray-600 text-sm">
-                {post.reviews} reviews
-              </span> */}
-            {/* </div> */}
+              {/* Rating */}
+              {/* <div className="flex items-center mt-2">
+                <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
+                  {post.star} ⭐ 
+                </span> */}
+                {/* <span className="ml-2 text-gray-600 text-sm">
+                  {post.reviews} reviews
+                </span> */}
+              {/* </div> */}
 
-            {/* Price */}
-            <div className="mt-3 flex flex-col items-end">
-              {/* <span className="text-gray-500 line-through text-sm">
-                {post.oldPrice ? `AED ${post.oldPrice}` : ""}
-              </span> */}
-              <p className="text-lg font-bold text-gray-800">
-                AED {post.price}
-              </p>
-              <p className="text-xs text-gray-500">Total for 1 night(incl. VAT)</p>
+              {/* Price */}
+              <div className="mt-3 flex flex-col items-end">
+                {/* <span className="text-gray-500 line-through text-sm">
+                  {post.oldPrice ? `AED ${post.oldPrice}` : ""}
+                </span> */}
+                <p className="text-lg font-bold text-gray-800">
+                  AED {post.price}
+                </p>
+                <p className="text-xs text-gray-500">Total for 1 night(incl. VAT)</p>
+              </div>
             </div>
           </div>
-        </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
     </div>
   );
 }
