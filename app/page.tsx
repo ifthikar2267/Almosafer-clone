@@ -94,15 +94,15 @@ export default function Home() {
 
   {/* Product Menu */}
   <div className="divide-y divide-gray-200">
-    <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
-  <span className="flex items-center gap-4 text-gray-700">
-    <Plane className="w-6 h-6 text-gray-700" /> Flights
-  </span>
-  <ChevronRight className="w-5 h-5 text-cyan-600" />
-</button>
+    <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100  hover:shadow-sm transition">
+      <span className="flex items-center gap-4 text-gray-700">
+        <Plane className="w-6 h-6 text-gray-700" /> Flights
+      </span>
+      <ChevronRight className="w-5 h-5 text-cyan-600" />
+    </button>
 
                 <Link href="/stay"> 
-                  <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100">
+                  <button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100  hover:shadow-sm transition">
                     <span className="flex items-center gap-4 text-gray-700">
                         <Bed className="w-6 h-6 text-gray-700" /> Stays
                     </span>
@@ -110,7 +110,7 @@ export default function Home() {
                     </button>
                 </Link>
 
-<button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200">
+<button className="w-full flex items-center justify-between gap-4 px-1 p-4 hover:bg-gray-100 border-b border-gray-200  hover:shadow-sm transition">
   <span className="flex items-center gap-4 text-gray-700">
     <Mountain className="w-6 h-6 text-gray-700" /> Activities
   </span>

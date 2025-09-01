@@ -12,7 +12,7 @@ import Guests from "../../component/Guests";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Stay () {
+export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
@@ -184,9 +184,9 @@ export default function Stay () {
           </div>
         ) : (
             <div>
-                 <p className="text-sm text-gray-500 ">Destination</p>
-                <span className={destination ? "text-gray-800" : "text-gray-800"}>
-                    {destination || "Dubai, AE"}
+                 <p className="text-sm text-gray-500 ">Choose your</p>
+                <span className={destination ? "text-gray-800" : "text-gray-600"}>
+                    {destination || "Destination"}
                 </span>
             </div>
           
@@ -219,9 +219,9 @@ export default function Stay () {
                                     />
                                 </div>
                             </div>
-                            <span className="text-gray-300 text-3xl pb-4">{">"}</span>
+                            <span className="text-gray-400 text-3xl pb-4"><ChevronRight/></span>
                             <div>
-                                <p className="text-sm text-gray-500 px-7">Check out</p>
+                                <p className="text-sm text-gray-500 px-10">Check out</p>
                                 <DatePicker
                                 selected={checkOut}
                                 onChange={(date) => {
@@ -232,7 +232,7 @@ export default function Stay () {
                                 endDate={checkOut}
                                 minDate={checkIn || new Date()}
                                  dateFormat="EEE dd MMM"
-                                className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full px-7"
+                                className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full px-10"
                                 />
                             </div>
                             </div>
@@ -264,16 +264,23 @@ export default function Stay () {
 
                         {/* Button */}
                         <button
-  onClick={() => {
-    if (destination) {
-      const city = destination.split(",")[0].trim();
-      router.push(`/city?city=${encodeURIComponent(city)}`);
-    }
-  }}
-  className="mt-7 w-full bg-[#ee4056] text-white py-3 rounded-full font-medium flex items-center justify-center gap-3"
->
-  <Search /> Search stays
-</button>
+                        onClick={() => {
+                            if (destination) {
+                            const city = destination.split(",")[0].trim();
+
+                            router.push(
+                                `/city?city=${encodeURIComponent(city)}&rooms=${encodeURIComponent(
+                                JSON.stringify(rooms)
+                                )}&checkIn=${checkIn.toISOString()}&checkOut=${checkOut.toISOString()}`
+                            );
+                            onSuccess?.();
+                            }
+                        }}
+                        className="mt-7 w-full bg-[#ee4056] text-white py-3 rounded-full font-medium flex items-center justify-center gap-3"
+                        >
+                        <Search /> Search stays
+                        </button>
+
 
                         </div>
 
