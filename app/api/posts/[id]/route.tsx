@@ -1,15 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "../../../../utils/connectMongo";
 import Post from "../../../../models/postModel";
 
 export async function GET(
-  req: Request,
-  context: { params: { id: string } }
+req: NextRequest,
+  { params }: { params: { id: string } }
 ) {
   await dbConnect();
 
   try {
-    const { id } = context.params;
+    const { id } = params;
     const post = await Post.findById(id);
 
     if (!post) {
