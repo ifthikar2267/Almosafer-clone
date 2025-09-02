@@ -11,6 +11,7 @@ import DestinationSearch from "../../component/DestinationSearch";
 import Guests from "../../component/Guests";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useDestination } from "../../context/DestinationContext"
 
 export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
 
@@ -20,10 +21,17 @@ export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
     const [checkIn, setCheckIn] = useState(today);
     const [checkOut, setCheckOut] = useState( new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
     const [isGuestsOpen, setIsGuestsOpen] = useState(false);
-    const [rooms, setRooms] = useState([{ adults: 2, children: 0 }]);
+    // const [rooms, setRooms] = useState([{ adults: 2, children: 0 }]);
     const [isOpened, setIsOpened] = useState(false);
-    const [destination, setDestination] = useState("");
+    // const [destination, setDestination] = useState("");
 
+
+      const {
+    destination,
+    setDestination,
+    rooms,
+    setRooms,
+      } = useDestination();
 
 
     return (
@@ -221,7 +229,7 @@ export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
                             </div>
                             <span className="text-gray-400 text-3xl pb-4"><ChevronRight/></span>
                             <div>
-                                <p className="text-sm text-gray-500 px-10">Check out</p>
+                                <p className="text-sm text-gray-500 px-8">Check out</p>
                                 <DatePicker
                                 selected={checkOut}
                                 onChange={(date) => {
@@ -232,7 +240,7 @@ export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
                                 endDate={checkOut}
                                 minDate={checkIn || new Date()}
                                  dateFormat="EEE dd MMM"
-                                className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full px-10"
+                                className="outline-none focus:ring-0 focus:border-transparent text-gray-800 text-md p-2 w-full px-8"
                                 />
                             </div>
                             </div>

@@ -12,7 +12,7 @@ export default function Page({ searchParams }: { searchParams: { [key: string]: 
   const checkOut: Date | null = searchParams.checkOut ? new Date(searchParams.checkOut) : null;
 
   return (
-    <Suspense fallback={<div className="bg-white text-red-800 font-bold text-xl h-full w-full flex items-center justify-center">Loading city...</div>}>
+    <Suspense>
       <City
         city={searchParams.city || ""}
         rooms={rooms}

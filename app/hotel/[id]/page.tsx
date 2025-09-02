@@ -56,6 +56,7 @@ export default function HotelDetail() {
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [similarPosts, setSimilarPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
    const [show, setShow] = useState(false);
 
@@ -114,9 +115,10 @@ useEffect(() => {
   };
 
 
-  useEffect(() => {
+   useEffect(() => {
     if (!id) return;
 
+    setLoading(true);
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`)
       .then(async (res) => {
         const text = await res.text();
@@ -128,10 +130,40 @@ useEffect(() => {
           console.error("Response was not JSON:", text);
         }
       })
-      .catch((err) => console.error("Fetch error:", err));
+      .catch((err) => console.error("Fetch error:", err))
+      .finally(() => setLoading(false));
   }, [id]);
 
-  if (!post) return <div className="bg-white text-black">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="flex flex-col items-center gap-3">
+          <svg
+            className="animate-spin h-10 w-10 text-gray-400" 
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    );
+  }
+
+ if (!post) return <div className="bg-white text-black">Loading...</div>;
 
   return (
     <div className="bg-white overflow-y-auto no-scrollbar ">
