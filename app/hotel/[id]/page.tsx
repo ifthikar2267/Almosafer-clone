@@ -14,6 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Guests from "../../../component/Guests";
 import Footer from "../../../component/Footer";
 import { FaWhatsapp } from "react-icons/fa";
+import { useDestination } from "../../../context/DestinationContext"
 
 type Post = {
   _id: string;
@@ -41,12 +42,12 @@ export default function HotelDetail() {
   const checkOutParam = searchParams.get("checkOut");
   const roomsParam = searchParams.get("rooms");
 
-  const [checkIn, setCheckIn] = useState<Date | null>(
-    checkInParam ? new Date(checkInParam) : null
-  );
-  const [checkOut, setCheckOut] = useState<Date | null>(
-    checkOutParam ? new Date(checkOutParam) : null
-  );
+//   const [checkIn, setCheckIn] = useState<Date | null>(
+//     checkInParam ? new Date(checkInParam) : null
+//   );
+//   const [checkOut, setCheckOut] = useState<Date | null>(
+//     checkOutParam ? new Date(checkOutParam) : null
+//   );
   const [rooms, setRooms] = useState<Room[]>(
     roomsParam ? JSON.parse(roomsParam) : [{ adults: 2, children: 0 }]
   );
@@ -59,6 +60,8 @@ export default function HotelDetail() {
   const [loading, setLoading] = useState(true);
 
    const [show, setShow] = useState(false);
+
+   const { checkIn, setCheckIn, checkOut,  setCheckOut,} = useDestination();
 
   useEffect(() => {
     const handleScroll = () => {

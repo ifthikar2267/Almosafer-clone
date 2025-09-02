@@ -26,11 +26,7 @@ export default function Stay ({ onSuccess }: { onSuccess?: () => void }) {
     // const [destination, setDestination] = useState("");
 
 
-      const {
-    destination,
-    setDestination,
-    rooms,
-    setRooms,
+      const { destination, setDestination, rooms, setRooms,
       } = useDestination();
 
 
