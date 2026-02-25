@@ -1,10 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Rating from "@mui/material/Rating";
-import { MapPin } from "lucide-react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 const PLACEHOLDER = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop";
 
