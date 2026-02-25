@@ -20,8 +20,39 @@ import SimilarPropertiesSection from "@/components/hotel-detail/SimilarPropertie
 const RED = "#ee4056";
 
 function getFaqList(hotel) {
-  const faqSource = hotel?.raw?.faq ?? hotel?.raw?.faqs ?? hotel?.faq ?? [];
-  if (Array.isArray(faqSource)) return faqSource;
+  const faqSource =
+    hotel?.raw?.faq ??
+    hotel?.raw?.faqs ??
+    hotel?.raw?.hotel_faqs ??
+    hotel?.faq ??
+    hotel?.hotel_faqs ??
+    [];
+
+  if (Array.isArray(faqSource)) {
+    return faqSource
+      .map((item) => {
+        if (!item) return null;
+        if (typeof item === "string") {
+          return { question: "", answer: item };
+        }
+        const question =
+          item.question_en ??
+          item.question ??
+          item.q ??
+          item.question_ar ??
+          item.questionAr ??
+          "";
+        const answer =
+          item.answer_en ??
+          item.answer ??
+          item.a ??
+          item.answer_ar ??
+          item.answerAr ??
+          "";
+        return { question, answer };
+      })
+      .filter(Boolean);
+  }
   if (typeof faqSource === "object")
     return Object.entries(faqSource).map(([q, a]) => ({ question: q, answer: a }));
   return [];
