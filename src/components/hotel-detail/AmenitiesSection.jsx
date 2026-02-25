@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import { Wifi, Car, Waves, Coffee, Tv, Dumbbell, Snowflake, UtensilsCrossed } from "lucide-react";
+import { Wifi, Car, Waves, Coffee, Tv, Dumbbell, Snowflake, UtensilsCrossed, Building2, Shirt } from "lucide-react";
 
 const ICON_MAP = {
   wifi: Wifi,
@@ -15,6 +15,8 @@ const ICON_MAP = {
   gym: Dumbbell,
   fitness: Dumbbell,
   spa: Snowflake,
+  lifts: Building2,
+  laundry: Shirt,
 };
 
 function getIcon(name) {
@@ -43,14 +45,14 @@ export default function AmenitiesSection({ amenities = [] }) {
   }
 
   return (
-    <section className="py-12">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Amenities</h2>
+    <section className="py-8">
+      <h2 className="text-xl font-semibold px-4 text-gray-900 mb-6">Amenities</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {visible.map((item, i) => {
           const label = typeof item === "string" ? item : item?.name ?? String(item);
           const Icon = getIcon(label);
           return (
-            <div key={i} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50/50 px-4 py-3">
+            <div key={i} className="flex items-center gap-3 px-4 py-3">
               {Icon ? <Icon size={20} className="text-gray-600 shrink-0" /> : <span className="w-5 h-5 rounded-full bg-gray-300 shrink-0" />}
               <span className="text-gray-700 text-sm font-medium truncate">{label}</span>
             </div>

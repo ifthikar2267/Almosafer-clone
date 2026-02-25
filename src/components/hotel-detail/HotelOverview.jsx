@@ -12,7 +12,7 @@ export default function HotelOverview({ description = "" }) {
 
   if (!text) {
     return (
-      <section className="py-12">
+      <section className="py-12 px-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">About this hotel</h2>
         <p className="text-gray-600">No description available.</p>
       </section>
@@ -20,7 +20,7 @@ export default function HotelOverview({ description = "" }) {
   }
 
   return (
-    <section className="py-12">
+    <section className="py-12 px-4">
       <h2 className="text-xl font-semibold text-gray-900 mb-4">About this hotel</h2>
       <p className="text-gray-600 whitespace-pre-wrap leading-relaxed">{display}</p>
       {shouldTruncate && (

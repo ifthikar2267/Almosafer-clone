@@ -29,7 +29,7 @@ export default function ImageCarousel({ images = [], alt = "Hotel" }) {
             type="button"
             onClick={() => setIndex(i + 1)}
             className={`relative aspect-[16/10] overflow-hidden rounded-xl bg-gray-200 transition ring-2 ring-offset-2 ${
-              index === i + 1 ? "ring-[#004C5A]" : "ring-transparent"
+              index === i + 1 ? "ring-[#004C5A] cursor-pointer" : "ring-transparent"
             }`}
           >
             <img src={src} alt="" className="h-full w-full object-cover" onError={(e) => (e.target.src = PLACEHOLDER)} />

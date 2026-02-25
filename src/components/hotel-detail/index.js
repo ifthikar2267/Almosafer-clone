@@ -1,10 +1,15 @@
 export { default as HotelHero } from "./HotelHero";
+export { default as HotelNavbar } from "./HotelNavbar";
+export { default as HotelHeader } from "./HotelHeader";
 export { default as HotelOverview } from "./HotelOverview";
 export { default as AmenitiesSection } from "./AmenitiesSection";
 export { default as RoomsSection } from "./RoomsSection";
 export { default as RoomCard } from "./RoomCard";
 export { default as BookingSidebar } from "./BookingSidebar";
 export { default as FAQSection } from "./FAQSection";
+export { default as SimilarPropertiesSection } from "./SimilarPropertiesSection";
+export { default as SimilarPropertyCard } from "./SimilarPropertyCard";
+export { getSimilarProperties } from "./SimilarPropertiesSection";
 export { default as ImageCarousel } from "./ImageCarousel";
 export { default as AmenitiesList } from "./AmenitiesList";
 export { default as PriceCard } from "./PriceCard";
