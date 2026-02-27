@@ -14,6 +14,8 @@ import {
   FilterSidebar,
   FilterChips,
   HotelCardSkeleton,
+  SideFilterSkeleton,
+  QuickFilterSkeleton,
   EmptyResultsState,
   HotelList,
 } from "@/components/hotel-listing";
@@ -183,7 +185,7 @@ export default function HotelsPage() {
         {/* Main layout: Desktop sidebar + results */}
         <div className="grid grid-cols-1 gap-4 px-4 py-4 md:grid-cols-12 md:gap-6 md:px-6 md:py-6">
           <aside className="hidden md:col-span-3 md:block">
-            <div>{sidebarContent}</div>
+            <div>{loading ? <SideFilterSkeleton /> : sidebarContent}</div>
           </aside>
 
           <main className="min-w-0 md:col-span-9">
@@ -220,11 +222,14 @@ export default function HotelsPage() {
             )}
 
             {loading ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <HotelCardSkeleton key={i} />
-                ))}
-              </div>
+              <>
+                <QuickFilterSkeleton />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <HotelCardSkeleton key={i} />
+                  ))}
+                </div>
+              </>
             ) : (
               <HotelList
                 hotels={filteredHotels}

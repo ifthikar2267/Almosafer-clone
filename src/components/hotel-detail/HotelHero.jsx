@@ -11,53 +11,75 @@ export default function HotelHero({ hotel }) {
   const main = list[index] || list[0];
   const thumbnails = list.slice(0, 5);
   const title = hotel?.title ?? hotel?.name ?? "";
-  const star = Number(hotel?.star ?? hotel?.starRating ?? 0);
-  const hotelType = hotel?.hotelType ?? hotel?.propertyType ?? "";
-  const reviewScore = Number(hotel?.reviewScore ?? 0);
-  const totalReviews = Number(hotel?.totalReviews ?? 0);
-  const address = hotel?.address ?? hotel?.location ?? "";
 
   return (
-    <section className="w-full">
-      {/* Gallery: main image (8 columns) + thumbnails (4 columns) */}
-      <div className="grid grid-cols-12 gap-2 md:gap-3">
-        {/* Main image – spans 8/12 on desktop */}
-        <div className="col-span-12 md:col-span-6">
-          <div className="relative overflow-hidden rounded-xl bg-gray-100">
-          <div className="aspect-[21/9] md:aspect-[12/9]">
+  <section className="w-full">
+
+      {/* ================= DESKTOP ================= */}
+      <div className="hidden md:grid gap-[2px] max-h-[670px] grid-cols-[1fr_0.5fr_0.5fr]">
+
+        {/* Main Image */}
+        <div className="relative h-[670px]">
+          <img
+            src={main}
+            alt={title}
+            className="h-full w-full object-cover"
+            onError={(e) => (e.target.src = PLACEHOLDER)}
+          />
+        </div>
+
+        {/* Thumbnail 1 */}
+        <div className="relative h-[670px]">
+          {thumbnails[1] && (
+            <img
+              src={thumbnails[1]}
+              className="h-full w-full object-cover"
+              onError={(e) => (e.target.src = PLACEHOLDER)}
+            />
+          )}
+        </div>
+
+        {/* Thumbnail 2 & 3 */}
+        <div className="grid grid-rows-2 gap-[2px] h-[670px]">
+          {thumbnails.slice(2, 4).map((src, i) => (
+            <div key={i} className="relative">
               <img
-                src={main}
-                alt={title}
-                className="h-full w-full object-contain"
+                src={src}
+                className="h-full w-full object-cover"
                 onError={(e) => (e.target.src = PLACEHOLDER)}
               />
             </div>
-          </div>
-        </div>
-
-        {/* Thumbnails – 4/12 column on desktop */}
-        <div className="col-span-12 hidden md:grid md:col-span-6 md:grid-cols-2 md:grid-rows-2 md:gap-2">
-          {thumbnails.slice(1, 5).map((src, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setIndex(i + 1)}
-              className={`relative overflow-hidden rounded-lg bg-gray-100 transition ring-2 ring-offset-2 ${
-                index === i + 1 ? "ring-[#004C5A]" : "ring-transparent"
-              }`}
-            >
-              <div className="aspect-[4/3]">
-                <img
-                  src={src}
-                  alt=""
-                  className="h-full w-full object-contain"
-                  onError={(e) => (e.target.src = PLACEHOLDER)}
-                />
-              </div>
-            </button>
           ))}
         </div>
       </div>
+
+      {/* ================= MOBILE ================= */}
+      <div className="md:hidden">
+        <div className="relative w-full">
+          <img
+            src={main}
+            alt={title}
+            className="w-full h-[300px] object-cover"
+            onError={(e) => (e.target.src = PLACEHOLDER)}
+          />
+        </div>
+
+        {/* Thumbnails Horizontal Scroll */}
+        <div className="flex gap-2 overflow-x-auto p-2">
+          {list.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              onClick={() => setIndex(i)}
+              className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 ${
+                index === i ? "border-black" : "border-transparent"
+              }`}
+              onError={(e) => (e.target.src = PLACEHOLDER)}
+            />
+          ))}
+        </div>
+      </div>
+
     </section>
   );
 }
