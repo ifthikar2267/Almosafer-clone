@@ -10,7 +10,7 @@ export default function FAQSection({ faqList = [] }) {
 
   if (list.length === 0) {
     return (
-      <section className="py-12">
+      <section className="py-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
         <div className="rounded-xl border border-gray-200 bg-white p-8 text-center">
           <p className="text-gray-600">No FAQ available for this hotel.</p>
@@ -20,7 +20,7 @@ export default function FAQSection({ faqList = [] }) {
   }
 
   return (
-    <section className="py-12">
+    <section className="py-4 px-3">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
       <div className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
         {list.map((item, i) => (

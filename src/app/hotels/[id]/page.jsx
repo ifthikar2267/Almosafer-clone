@@ -16,6 +16,8 @@ import AmenitiesSection from "@/components/hotel-detail/AmenitiesSection";
 import RoomsSection from "@/components/hotel-detail/RoomsSection";
 import FAQSection from "@/components/hotel-detail/FAQSection";
 import SimilarPropertiesSection from "@/components/hotel-detail/SimilarPropertiesSection";
+import HotelIntroPopup from "@/components/chatbot/HotelIntroPopup";
+import HotelChatbot from "@/components/chatbot/HotelChatbot";
 
 const RED = "#ee4056";
 
@@ -216,6 +218,14 @@ export default function HotelDetailsPage() {
           searchParams={searchParamsString}
           limit={8}
         />
+
+        {/* Onboarding-style intro popup near page load */}
+        <HotelIntroPopup
+          titleText="Your AI Assistant — ask about policies, amenities, fees, or attractions"
+          autoCloseTime={20000}
+        />
+
+        <HotelChatbot hotelId={id} hotelName={title} />
 
         {/* Mobile sticky CTA */}
         <div className="lg:hidden fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white p-4 shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">

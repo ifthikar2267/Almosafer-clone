@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
@@ -11,9 +12,12 @@ import { useFetchHotels } from "@/hooks/useFetchHotels";
 import { useSearchResults } from "@/context/SearchResultsContext";
 import { getFilterOptionsFromHotels, filterHotels } from "@/services/hotel.service";
 import {
+  ListingSearchBar,
   FilterSidebar,
   FilterChips,
   HotelCardSkeleton,
+  SideFilterSkeleton,
+  QuickFilterSkeleton,
   EmptyResultsState,
   HotelList,
 } from "@/components/hotel-listing";
@@ -21,10 +25,24 @@ import {
 const TEAL = "#0d9488";
 
 export default function HotelsPage() {
+  const router = useRouter();
   const { consumePreFetchedHotels } = useSearchResults();
   const [preFetchedHotels, setPreFetchedHotels] = useState(null);
   const { hotels: fetchedHotels, loading: fetchLoading, error, refetch } = useFetchHotels();
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleSearch = useCallback(
+    ({ city, checkIn, checkOut, adults, children }) => {
+      const params = new URLSearchParams();
+      if (city) params.set("city", city);
+      if (checkIn) params.set("checkIn", checkIn.toISOString?.() || String(checkIn));
+      if (checkOut) params.set("checkOut", checkOut.toISOString?.() || String(checkOut));
+      if (adults != null) params.set("adults", String(adults));
+      if (children != null) params.set("children", String(children));
+      router.push(`/city?${params.toString()}`);
+    },
+    [router]
+  );
 
   useEffect(() => {
     const fromContext = consumePreFetchedHotels();
@@ -121,6 +139,15 @@ export default function HotelsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Sticky search bar: sits below navbar (h-13=52px mobile, md:h-16=64px desktop) */}
+      <div className="sticky z-[40] w-full bg-gray-50 py-2 top-[52px] md:top-16">
+        <Box sx={{ maxWidth: 1200, mx: "auto", px: { xs: 2, md: 3 } }}>
+          <ListingSearchBar
+            destination="Dubai"
+            onSearch={handleSearch}
+          />
+        </Box>
+      </div>
       <Box sx={{ maxWidth: 1200, mx: "auto" }}>
         {/* Mobile: filter bar + drawer */}
         <Box
@@ -183,7 +210,7 @@ export default function HotelsPage() {
         {/* Main layout: Desktop sidebar + results */}
         <div className="grid grid-cols-1 gap-4 px-4 py-4 md:grid-cols-12 md:gap-6 md:px-6 md:py-6">
           <aside className="hidden md:col-span-3 md:block">
-            <div>{sidebarContent}</div>
+            <div>{loading ? <SideFilterSkeleton /> : sidebarContent}</div>
           </aside>
 
           <main className="min-w-0 md:col-span-9">
@@ -220,11 +247,14 @@ export default function HotelsPage() {
             )}
 
             {loading ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <HotelCardSkeleton key={i} />
-                ))}
-              </div>
+              <>
+                <QuickFilterSkeleton />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <HotelCardSkeleton key={i} />
+                  ))}
+                </div>
+              </>
             ) : (
               <HotelList
                 hotels={filteredHotels}
