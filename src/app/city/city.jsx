@@ -2,10 +2,24 @@
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Drawer from "@mui/material/Drawer";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Filter } from "lucide-react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { ListingHeader, FilterSidebar, HotelList } from "@/components/hotel-listing";
+import {
+  ListingSearchBar,
+  FilterSidebar,
+  FilterChips,
+  HotelList,
+  SideFilterSkeleton,
+  QuickFilterSkeleton,
+  HotelCardSkeleton,
+} from "@/components/hotel-listing";
 import { searchHotels, getFilterOptionsFromHotels, filterHotels } from "@/services/hotel.service";
+
+const TEAL = "#0d9488";
 
 const PAGE_SIZE = 10;
 
@@ -28,6 +42,7 @@ export default function City({ city: initialCity, rooms, checkIn: initialCheckIn
   const [page, setPage] = useState(1);
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const area = searchParamsUrl?.get("area") || "";
   const stars = searchParamsUrl?.get("stars") || "";
@@ -89,6 +104,27 @@ export default function City({ city: initialCity, rooms, checkIn: initialCheckIn
   }, [hotels]);
 
   const filterOptions = useMemo(() => getFilterOptionsFromHotels(hotels), [hotels]);
+
+  const selectedAreaLabels = useMemo(() => {
+    return selectedAreaIds.map((id) => {
+      const a = filterOptions.areas?.find((x) => x.id == id || x.name === id);
+      return a?.name ?? String(id);
+    });
+  }, [selectedAreaIds, filterOptions.areas]);
+
+  const selectedTypeLabels = useMemo(() => {
+    return selectedTypeIds.map((id) => {
+      const t = filterOptions.propertyTypes?.find((x) => x.id == id || x.name === id);
+      return t?.name ?? String(id);
+    });
+  }, [selectedTypeIds, filterOptions.propertyTypes]);
+
+  const selectedChainLabels = useMemo(() => {
+    return selectedChainIds.map((id) => {
+      const c = filterOptions.chains?.find((x) => x.id == id || x.name === id);
+      return c?.name ?? String(id);
+    });
+  }, [selectedChainIds, filterOptions.chains]);
 
   const updateUrl = useCallback((updates) => {
     const params = new URLSearchParams(searchParamsUrl?.toString() || "");
@@ -155,42 +191,217 @@ export default function City({ city: initialCity, rooms, checkIn: initialCheckIn
     router.push(`${pathname}?${updateUrl({ minPrice: min || undefined, maxPrice: max >= 999999 ? undefined : max })}`);
   }, [pathname, updateUrl, router]);
 
+  const handleSearch = useCallback(
+    ({ city: searchCity, checkIn: searchCheckIn, checkOut: searchCheckOut, rooms: searchRooms, adults: searchAdults, children: searchChildren }) => {
+      const params = new URLSearchParams(searchParamsUrl?.toString() || "");
+      if (searchCity) params.set("city", searchCity);
+      else params.delete("city");
+      if (searchCheckIn) params.set("checkIn", searchCheckIn.toISOString?.() || String(searchCheckIn));
+      if (searchCheckOut) params.set("checkOut", searchCheckOut.toISOString?.() || String(searchCheckOut));
+      if (searchAdults != null) params.set("adults", String(searchAdults));
+      if (searchChildren != null) params.set("children", String(searchChildren));
+      params.delete("page");
+      router.push(`${pathname}?${params.toString()}`);
+    },
+    [pathname, router, searchParamsUrl]
+  );
+
+  const clearAllFilters = useCallback(() => {
+    router.push(`${pathname}?${updateUrl({ area: undefined, type: undefined, stars: undefined, chain: undefined, amenities: undefined, minPrice: undefined, maxPrice: undefined })}`);
+    setDrawerOpen(false);
+  }, [pathname, updateUrl, router]);
+
+  const removeArea = useCallback(
+    (label) => {
+      const idToRemove = selectedAreaIds.find((id) => {
+        const a = filterOptions.areas?.find((x) => x.id == id || x.name === id);
+        return (a?.name ?? String(id)) === label;
+      });
+      if (idToRemove != null) {
+        const next = selectedAreaIds.filter((a) => a !== idToRemove);
+        router.push(`${pathname}?${updateUrl({ area: next.length ? next.join(",") : undefined })}`);
+      }
+    },
+    [pathname, updateUrl, router, selectedAreaIds, filterOptions.areas]
+  );
+  const removeType = useCallback(
+    (label) => {
+      const idToRemove = selectedTypeIds.find((id) => {
+        const t = filterOptions.propertyTypes?.find((x) => x.id == id || x.name === id);
+        return (t?.name ?? String(id)) === label;
+      });
+      if (idToRemove != null) {
+        const next = selectedTypeIds.filter((t) => t !== idToRemove);
+        router.push(`${pathname}?${updateUrl({ type: next.length ? next.join(",") : undefined })}`);
+      }
+    },
+    [pathname, updateUrl, router, selectedTypeIds, filterOptions.propertyTypes]
+  );
+  const removeChain = useCallback(
+    (label) => {
+      const idToRemove = selectedChainIds.find((id) => {
+        const c = filterOptions.chains?.find((x) => x.id == id || x.name === id);
+        return (c?.name ?? String(id)) === label;
+      });
+      if (idToRemove != null) {
+        const next = selectedChainIds.filter((c) => c !== idToRemove);
+        router.push(`${pathname}?${updateUrl({ chain: next.length ? next.join(",") : undefined })}`);
+      }
+    },
+    [pathname, updateUrl, router, selectedChainIds, filterOptions.chains]
+  );
+  const removeStar = useCallback((value) => router.push(`${pathname}?${updateUrl({ stars: selectedStarRatings.filter((s) => s !== value).join(",") || undefined })}`), [pathname, updateUrl, router, selectedStarRatings]);
+  const removeAmenity = useCallback((name) => router.push(`${pathname}?${updateUrl({ amenities: selectedAmenityNames.filter((n) => n !== name).join(",") || undefined })}`), [pathname, updateUrl, router, selectedAmenityNames]);
+
+  const sidebarContent = (
+    <Box className="p-4 md:p-0">
+      <FilterSidebar
+        staysCount={sortedList.length}
+        cityName={city || "All destinations"}
+        selectedAreas={selectedAreaIds}
+        selectedTypes={selectedTypeIds}
+        selectedStarRatings={selectedStarRatings}
+        selectedChains={selectedChainIds}
+        selectedAmenityNames={selectedAmenityNames}
+        onAreaChange={handleAreaChange}
+        onTypeChange={handleTypeChange}
+        onStarRatingChange={handleStarRatingChange}
+        onChainChange={handleChainChange}
+        onAmenityChange={handleAmenityChange}
+        onClearAll={clearAllFilters}
+        filterOptions={filterOptions}
+        filterValueKey="id"
+      />
+    </Box>
+  );
+
   return (
-    <div className="min-h-screen bg-white">
-      <ListingHeader />
-      <Container maxWidth="xl" className="px-4 py-6">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+    <div className="min-h-screen bg-gray-50">
+      {/* Sticky search bar: sits below navbar (h-13=52px mobile, md:h-16=64px desktop) */}
+      <div className="sticky z-[40] w-full bg-gray-50 py-2 top-[52px] md:top-16">
+        <Box sx={{ maxWidth: 1200, mx: "auto", px: { xs: 2, md: 3 } }}>
+          <ListingSearchBar
+            destination={city}
+            checkIn={checkIn}
+            checkOut={checkOut}
+            adults={adults}
+            children={children}
+            onSearch={handleSearch}
+          />
+        </Box>
+      </div>
+      <Box sx={{ maxWidth: 1200, mx: "auto" }}>
+        {/* Mobile: filter bar + drawer */}
+        <Box
+          className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 md:hidden"
+          sx={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
+        >
+          <Typography variant="subtitle1" fontWeight={600} color="text.primary">
+            {city || "Hotels"}
+          </Typography>
+          <Button
+            variant="outlined"
+            startIcon={<Filter size={18} />}
+            onClick={() => setDrawerOpen(true)}
+            className="rounded-full"
+            sx={{ borderColor: TEAL, color: TEAL, "&:hover": { borderColor: TEAL, bgcolor: "#f0fdfa" } }}
+          >
+            Filters {sortedList.length > 0 && `(${sortedList.length})`}
+          </Button>
+        </Box>
+
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+          PaperProps={{
+            sx: {
+              width: "min(100vw - 32px, 360px)",
+              maxWidth: 360,
+              borderRadius: "0 12px 12px 0",
+              maxHeight: "100%",
+              height: "100%",
+            },
+          }}
+        >
+          <Box className="flex flex-col h-full">
+            <Box className="flex shrink-0 items-center justify-between border-b border-gray-200 p-4">
+              <Typography variant="h6" fontWeight={700}>
+                Filters
+              </Typography>
+              <IconButton aria-label="Close filters" onClick={() => setDrawerOpen(false)} size="small">
+                <span className="text-xl leading-none">×</span>
+              </IconButton>
+            </Box>
+            <Box className="flex-1 overflow-y-auto">{sidebarContent}</Box>
+            <Box className="sticky bottom-0 shrink-0 border-t border-gray-200 bg-white p-4">
+              <Button
+                variant="contained"
+                fullWidth
+                size="large"
+                onClick={() => setDrawerOpen(false)}
+                className="rounded-full font-semibold normal-case"
+                sx={{ bgcolor: TEAL, py: 1.5, "&:hover": { bgcolor: "#0f766e" } }}
+              >
+                Apply
+              </Button>
+            </Box>
+          </Box>
+        </Drawer>
+
+        {/* Main layout: Desktop sidebar + results */}
+        <div className="grid grid-cols-1 gap-4 px-4 py-4 md:grid-cols-12 md:gap-6 md:px-6 md:py-6">
           <aside className="hidden md:col-span-3 md:block">
             <div className="sticky top-24 self-start">
-              <FilterSidebar
-                staysCount={sortedList.length}
-                cityName={city}
-                selectedAreas={selectedAreaIds}
-                selectedTypes={selectedTypeIds}
-                selectedStarRatings={selectedStarRatings}
-                selectedChains={selectedChainIds}
-                selectedAmenityNames={selectedAmenityNames}
-                onAreaChange={handleAreaChange}
-                onTypeChange={handleTypeChange}
-                onStarRatingChange={handleStarRatingChange}
-                onChainChange={handleChainChange}
-                onAmenityChange={handleAmenityChange}
-                filterOptions={filterOptions}
-                filterValueKey="id"
-              />
+              {loading ? <SideFilterSkeleton /> : sidebarContent}
             </div>
           </aside>
-          <main className="col-span-1 md:col-span-9">
-            <HotelList
-              hotels={displayedList}
-              loading={loading}
-              hasMore={hasMore}
-              onLoadMore={() => setPage((p) => p + 1)}
-              searchParams={searchParamsUrl?.toString() || ""}
-            />
+          <main className="min-w-0 md:col-span-9">
+            {!loading && (
+              <>
+                <Typography variant="subtitle2" className="mb-2 text-gray-600" sx={{ fontWeight: 600 }}>
+                  {sortedList.length} propert{sortedList.length === 1 ? "y" : "ies"} found
+                </Typography>
+                <FilterChips
+                  selectedAreas={selectedAreaLabels}
+                  selectedTypes={selectedTypeLabels}
+                  selectedChains={selectedChainLabels}
+                  selectedStarRatings={selectedStarRatings}
+                  selectedAmenityNames={selectedAmenityNames}
+                  onRemoveArea={removeArea}
+                  onRemoveType={removeType}
+                  onRemoveChain={removeChain}
+                  onRemoveStar={removeStar}
+                  onRemoveAmenity={removeAmenity}
+                  onClearAll={clearAllFilters}
+                />
+              </>
+            )}
+            {loading ? (
+              <>
+                <QuickFilterSkeleton />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <HotelCardSkeleton key={i} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <HotelList
+                hotels={displayedList}
+                loading={false}
+                hasMore={hasMore}
+                onLoadMore={() => setPage((p) => p + 1)}
+                searchParams={searchParamsUrl?.toString() || ""}
+                emptyMessage="No hotels found"
+                emptySubtext="Try adjusting your filters or search in a different area."
+                onReset={clearAllFilters}
+                showResultCount={false}
+              />
+            )}
           </main>
         </div>
-      </Container>
+      </Box>
     </div>
   );
 }

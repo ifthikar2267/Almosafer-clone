@@ -49,8 +49,8 @@ export default function SimilarPropertiesSection({
   }
 
   return (
-    <section id="similar" className="border-gray-200 bg-white py-8">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+    <section id="similar" className="border-gray-200 bg-white py-3">
+      <div className="mx-auto max-w-7xl px-4 md:px-20">
         <Typography
           variant="h6"
           fontWeight={700}

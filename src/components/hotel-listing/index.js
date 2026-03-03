@@ -1,4 +1,3 @@
-export { default as ListingHeader } from "./ListingHeader";
 export { default as ListingSearchBar } from "./ListingSearchBar";
 export { default as FilterSidebar } from "./FilterSidebar";
 export { default as FilterSection } from "./FilterSection";

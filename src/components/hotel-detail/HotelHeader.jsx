@@ -30,9 +30,9 @@ export default function HotelHeader({
   return (
     <Box className="border-b border-gray-200 bg-white px-4 py-8 md:px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between mr-20">
           {/* Left */}
-          <div className="min-w-0 flex-1 space-y-3">
+          <div className="min-w-0 flex-1 space-y-3 md:px-20">
             <Typography
               variant="h4"
               component="h1"
@@ -81,38 +81,64 @@ export default function HotelHeader({
 
           {/* Right – Rating card */}
           <Card
-            className="w-full shrink-0 rounded-lg border border-gray-200 bg-gray-50 shadow-sm md:w-72"
-            elevation={0}
-            sx={{ p: 2 }}
-          >
-            <div className="flex flex-col items-center gap-1 text-center">
-              <Typography
-                variant="h4"
-                fontWeight={700}
-                sx={{ color: "#22c55e" }}
-              >
-                {rating}
-              </Typography>
-              <Typography variant="subtitle2" fontWeight={600} color="text.primary">
-                {ratingLabel}
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                {ratingCount}
-              </Typography>
-            </div>
-            <Box className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 border-t border-gray-200 pt-3">
-              {scores.map(({ label, value }) => (
-                <div key={label} className="flex items-baseline gap-1">
-                  <Typography variant="caption" fontWeight={600} color="text.primary">
-                    {label}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {value}
-                  </Typography>
-                </div>
-              ))}
-            </Box>
-          </Card>
+  className="w-full shrink-0 rounded-lg border border-gray-200 bg-gray-50 shadow-sm md:w-100 "
+  elevation={0}
+  sx={{ p: 2 }}
+>
+  <div className="flex justify-between items-start">
+    
+    {/* LEFT SIDE */}
+    <div className="flex flex-col gap-1">
+      <Typography
+        variant="h6"
+        fontWeight={700}
+        sx={{
+          backgroundColor: "#16a34a",
+          color: "#fff",
+          px: 1.5,
+          py: 0.6,
+          borderRadius: "8px",
+          fontWeight: 700,
+          fontSize: "0.95rem",
+          display: "inline-block",
+          lineHeight: 1.2,
+          minWidth: 40,
+          textAlign: "center"
+        }}
+      >
+        {rating}
+      </Typography>
+
+      <Typography variant="subtitle2" fontWeight={600} color="text.primary">
+        {ratingLabel}
+      </Typography>
+
+      <Typography variant="caption" color="text.secondary">
+        {ratingCount}
+      </Typography>
+    </div>
+
+    {/* RIGHT SIDE */}
+    <Box className="flex flex-wrap justify-end gap-x-2 gap-y-1 mt-8">
+      {scores.map(({ label, value }) => (
+        <div key={label} className="flex items-baseline gap-1">
+          <Typography variant="caption" fontWeight={600} color="text.primary">
+            {label}
+          </Typography>
+          <Typography variant="caption" sx={{
+          backgroundColor: "#16a34a",
+          color: "white",
+          padding: "1px 5px",
+          borderRadius: "3px"
+        }}>
+            {value}
+          </Typography>
+        </div>
+      ))}
+    </Box>
+
+  </div>
+</Card>
         </div>
       </div>
     </Box>

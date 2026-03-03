@@ -125,6 +125,33 @@ export async function fetchHotelFilters() {
   }
 }
 
+/**
+ * Fetches unique areas from the hotels API (dashboard-hotelmanagement.vercel.app).
+ * Each hotel has areas: { id, name_en, name_ar }. Returns [{ id, name }] for autocomplete.
+ */
+export async function fetchAreasFromHotels() {
+  try {
+    const res = await fetch(`${getBase()}/api/hotels`);
+    if (!res.ok) return [];
+    const json = await res.json();
+    const list = json?.data ?? json;
+    const arr = Array.isArray(list) ? list : [];
+    const seen = new Map();
+    arr.forEach((h) => {
+      const a = h.areas;
+      if (a && (a.id != null || a.name_en)) {
+        const id = a.id ?? a.name_en;
+        const name = (a.name_en || a.name_ar || "").trim();
+        if (name && !seen.has(id)) seen.set(id, { id, name, type: "area" });
+      }
+    });
+    return Array.from(seen.values()).sort((a, b) => a.name.localeCompare(b.name));
+  } catch (err) {
+    console.warn("fetchAreasFromHotels failed:", err?.message || err);
+    return [];
+  }
+}
+
 export function getFilterOptionsFromHotels(hotels) {
   const areaMap = new Map();
   const typeMap = new Map();

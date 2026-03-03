@@ -23,9 +23,9 @@ export default function HotelNavbar({ value = 0, onChange }) {
     <Box className="border-b border-gray-200 bg-white shadow-sm" sx={{
     position: "sticky",
     top: 60,
-    zIndex: 1100,
+    zIndex: 100,
   }}>
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl px-4 md:px-20">
         <Tabs
           value={activeValue}
           onChange={handleChange}
