@@ -7,18 +7,13 @@ import AILogo from "@/constants/AILogo";
 function TypingIndicator() {
   return (
     <div className="flex justify-start">
-      <div className="rounded-2xl rounded-bl-md bg-gray-100 px-4 py-3 shadow-sm">
-        <div className="flex gap-1.5">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              className="h-2 w-2 animate-bounce rounded-full bg-gray-500"
-              style={{ animationDelay: `${i * 0.15}s` }}
-            />
-          ))}
-        </div>
+      <div className="rounded-2xl rounded-bl-md bg-gray-100 px-4 py-3 shadow-sm flex items-center gap-2">
+        <p className="text-gray-500 text-bold">fetching hotel details</p>
+        <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-500 mt-1"></span>
+        <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-500 mt-1" style={{ animationDelay: '0.15s' }} />
+        <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-500 mt-1" style={{ animationDelay: '0.3s' }} />
       </div>
-    </div>
+  </div>
   );
 }
 
