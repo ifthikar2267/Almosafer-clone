@@ -45,7 +45,7 @@ export default function ChatMessage({ role, content, onRelatedClick }) {
 
         {isAssistant && related.length > 0 && (
           <div className="mt-2 space-y-1 text-sm">
-            <div className="text-gray-900">Related questions:</div>
+            <div className="text-gray-900 font-bold">Related questions:</div>
             {related.map((q) => (
               <button
                 key={q}
