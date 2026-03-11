@@ -51,7 +51,7 @@ export default function ChatMessage({ role, content, onRelatedClick }) {
                 key={q}
                 type="button"
                 onClick={() => onRelatedClick && onRelatedClick(q)}
-                className="block w-full text-left text-gray-700 hover:text-gray-900 cursor-pointer"
+                className="block w-full text-left text-[#0C9AB0] underline underline-offset-2 hover:text-[#0a7f93] cursor-pointer"
               >
                 {q}
               </button>
