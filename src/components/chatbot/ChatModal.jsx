@@ -173,7 +173,7 @@ export default function ChatModal({
               <button
                 type="button"
                 onClick={clearChat}
-                className="rounded-lg px-2 py-1 text-xs text-gray-500 hover:bg-gray-100"
+                className="rounded-lg px-2 py-1 text-xs text-gray-500 hover:bg-gray-100 cursor-pointer"
               >
                 Clear
               </button>
@@ -182,7 +182,7 @@ export default function ChatModal({
             <button
               type="button"
               onClick={() => setIsMaximized((v) => !v)}
-              className="rounded-lg p-2 text-gray-500 hover:bg-gray-100"
+              className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 cursor-pointer"
             >
               ⛶
             </button>
@@ -190,7 +190,7 @@ export default function ChatModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg p-2 text-gray-500 hover:bg-gray-100"
+              className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 cursor-pointer"
             >
               ✕
             </button>
@@ -248,7 +248,7 @@ export default function ChatModal({
               type="button"
               onClick={startVoiceSearch}
               disabled={listening}
-              className="rounded-xl border border-gray-200 px-3 py-2.5 text-gray-600 hover:bg-gray-100"
+              className="rounded-xl border border-gray-200 px-3 py-2.5 text-gray-600 hover:bg-gray-100 cursor-pointer"
             >
               <FontAwesomeIcon
                 icon={faMicrophone}
@@ -259,7 +259,7 @@ export default function ChatModal({
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="rounded-2xl bg-[#0C9AB0] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#0C9AB0] disabled:opacity-50"
+              className="rounded-2xl bg-[#0C9AB0] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#0C9AB0] disabled:cursor-not-allowed cursor-pointer disabled:opacity-50"
             >
               Send
             </button>
