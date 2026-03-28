@@ -114,7 +114,7 @@ export default function RoomCard({ room, searchParams = "" }) {
                 item
                 xs={12}
                 md={3}
-                className="mt-2 text-left md:mt-0 md:text-center"
+                className="mt-2 text-center md:mt-0 md:text-center"
               >
                 Guests
               </Grid>
