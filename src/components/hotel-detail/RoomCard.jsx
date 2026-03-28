@@ -351,7 +351,7 @@ export default function RoomCard({ room, searchParams = "" }) {
                     <div className="flex justify-stretch md:justify-end">
                       <a
                         href={`#rooms${searchParams ? `?${searchParams}` : ""}`}
-                        className="inline-flex w-full items-center justify-center rounded-full bg-[#EF4500] hover:bg-[#d43c00] px-4 py-2.5 text-sm font-semibold text-white md:w-auto"
+                        className="inline-flex w-full items-center justify-center rounded-full bg-[#EF4500] px-4 py-2.5 text-sm font-semibold text-white md:w-auto"
                       >
                         Book now
                       </a>
@@ -362,7 +362,7 @@ export default function RoomCard({ room, searchParams = "" }) {
             })}
           </div>
         ) : (
-          <div className="mt-4 rounded-xl border border-gray-200 bg-white p-6 text-center text-sm text-gray-700">
+          <div className="mt-4 rounded-xl border border-gray-200 bg-white p-6 text-center text-sm text-gray-500">
             No packages available for this room.
           </div>
         )}
