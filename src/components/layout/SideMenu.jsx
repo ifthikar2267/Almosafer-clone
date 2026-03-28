@@ -5,9 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Plane, Bed, Mountain, Search, User, CalendarCheck, Tag, Globe, MapPin, DollarSign, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-/**
- * Shared bottom sheet / slide-up menu (Options) used on Home and Stay pages.
- */
+
 export default function SideMenu({ open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose} className="relative z-50">
