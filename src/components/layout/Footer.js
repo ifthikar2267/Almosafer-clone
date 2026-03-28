@@ -13,7 +13,7 @@ export default function Footer() {
   <div>
     <h3 className="font-semibold text-gray-900 inline-block mr-2 mb-2">Corporate:</h3>
     <div className="inline-flex flex-wrap gap-x-3 gap-y-1">
-      <Link href="#" className="text-cyan-600 hover:underline">About us</Link>
+      <Link href="#" className="text-cyan-600 hover:underline">About Us</Link>
       <Link href="#" className="text-cyan-600 hover:underline">Careers</Link>
       <Link href="#" className="text-cyan-600 hover:underline">Almosafer Business</Link>
       <Link href="#" className="text-cyan-600 hover:underline">Almosafer Corporate</Link>
