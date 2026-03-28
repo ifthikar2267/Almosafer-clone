@@ -351,7 +351,7 @@ export default function RoomCard({ room, searchParams = "" }) {
                     <div className="flex justify-stretch md:justify-end">
                       <a
                         href={`#rooms${searchParams ? `?${searchParams}` : ""}`}
-                        className="inline-flex w-full items-center justify-center rounded-full bg-[#EF4500] px-4 py-2.5 text-sm font-semibold text-white md:w-auto"
+                        className="inline-flex w-full items-center justify-center rounded-full bg-[#EF4500] hover:bg-[#d43c00] px-4 py-2.5 text-sm font-semibold text-white md:w-auto"
                       >
                         Book now
                       </a>
