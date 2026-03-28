@@ -16,7 +16,7 @@ The app consumes a hotel management backend (`/api/hotels`) and focuses on high�
 ---
 
 ## Features
-
+hi how are you
 - **Hotel Listing Page**
   - Destination search (city/area)
   - Check‑in / check‑out date pickers
