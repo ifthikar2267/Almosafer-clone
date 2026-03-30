@@ -14,7 +14,6 @@ import { MapPin, Search, CalendarDays, Users } from "lucide-react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { fetchAreasFromHotels } from "@/services/hotel.service";
 import { LOCATION_DATA } from "@/utils/locationData";
-import { grey } from "node_modules/@mui/material/colors";
 
 const TEAL = "#004C5A";
 
